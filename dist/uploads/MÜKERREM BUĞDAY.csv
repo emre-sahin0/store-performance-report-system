@@ -1,0 +1,87 @@
+﻿;;;;;;;;;;;;;;;;;;;
+Satış Performans Raporu;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+Veri parametreleri:;;;Başlangıç Tarihi: 01.01.2024 08:00:00;;;;;;;;;;;;;;;;
+;;;Bitiş Tarihi: 31.12.2024 23:59:59;;;;;;;;;;;;;;;;
+Filtre:;;;"Cari Hesap Eşittir ""MÜKERREM BUĞDAY - SARAY DEKOR İÇ DEKORASYON""";;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+Fatura Tarihi.Yıl;;Malzeme Grubu;;;Malzeme.Teknik Tanım;;Kategori;Toplam;;;;;;;;;;;
+;;;;;;;;Miktar;;;;Satış Tutarı;;;;;;Birim Fiyat;
+;;;;;;;;Miktar;;;;Satış Tutarı;;;;;;Birim Fiyat;
+;;;;;;;;Satış Miktar;İade Miktar;Net Satış Miktar;Net Satış Miktarı (Metre);Kdv Li Satış Tutar;Kdv Li Satış Dövizli Tutar;Kdv Li İade Tutar;Kdv Li İade Dövizli Tutar;Kdv Li Net Satış Tutar;Kdv Li Net Satış Dövizli Tutar;Birim Fiyat;İade Birim Fiyat
+2024;;;;;;;;37.331,08;1.466,61;35.864,47;36.354,07;28.957.292,34;0;1.087.576,70;0;27.869.715,64;0;5.584.380,22;269.581,59
+2024;;AdaHome Amerikan Servis 4 lü Set;;;;;AdaHome Amerikan Servis 4 lü Set;17,00;1,00;16,00;16,00;5.900,76;0;351,76;0;5.549,00;0;4.404,98;319,78
+2024;;AdaHome Çam Eteği Yılbaşı;;;;;AdaHome Çam Eteği Yılbaşı;1,00;0;1,00;1,00;250,00;0;0;0;250,00;0;227,27;0
+2024;;AdaHome Dolgulu Yastık Fırfırlı;;;;;AdaHome Dolgulu Yastık Fırfırlı;179,00;3,00;176,00;176,00;62.291,90;0;1.055,28;0;61.236,62;0;49.763,35;639,56
+2024;;AdaHome Dolgulu Yastık Fırfırlı Özel Tasarım;;;;;AdaHome Dolgulu Yastık Fırfırlı Özel Tasarım;11,00;0;11,00;11,00;4.519,27;0;0;0;4.519,27;0;3.353,28;0
+2024;;AdaHome Dolgulu Yastık Fırfırlı Yılbaşı;;;;;AdaHome Dolgulu Yastık Fırfırlı Yılbaşı;2,00;0;2,00;2,00;679,60;0;0;0;679,60;0;617,82;0
+2024;;AdaHome Kartela 5 Kumaşı Gösteren (Şelale);;;;;AdaHome Kartela 5 Kumaşı Gösteren (Şelale);1,00;0;1,00;1,00;120,00;0;0;0;120,00;0;100,00;0
+2024;;AdaHome Kartela Baskılı (Şelale);;;;;AdaHome Kartela Baskılı (Şelale);90,00;0;90,00;90,00;10.800,00;0;0;0;10.800,00;0;9.000,00;0
+2024;;AdaHome Kartela Dış Mekan (Şelale);;;;;AdaHome Kartela Dış Mekan (Şelale);1,00;0;1,00;1,00;162,00;0;0;0;162,00;0;135,00;0
+2024;;AdaHome Kartela Döşemelik Kumaş (Şelale);;;;;AdaHome Kartela Döşemelik Kumaş (Şelale);4,00;0;4,00;4,00;576,00;0;0;0;576,00;0;480,00;0
+2024;;AdaHome Kartela Kendinden Renkli (Şelale);;;;;AdaHome Kartela Kendinden Renkli (Şelale);4,00;0;4,00;4,00;480,00;0;0;0;480,00;0;400,00;0
+2024;;AdaHome Kartela Tül (Şelale);;;;;AdaHome Kartela Tül (Şelale);4,00;0;4,00;4,00;480,00;0;0;0;480,00;0;400,00;0
+2024;;AdaHome Kumaş Baskılı Blackout Özel Tasarım ;;;;;AdaHome Kumaş Baskılı Blackout Özel Tasarım;4,00;0;4,00;4,00;2.035,26;0;0;0;2.035,26;0;925,11;0
+2024;;AdaHome Masa Örtüsü;;;;;AdaHome Masa Örtüsü;19,00;2,00;17,00;17,00;7.779,85;0;844,22;0;6.935,63;0;6.358,92;767,48
+2024;;AdaHome Masa Örtüsü Özel Tasarım;;;;;AdaHome Masa Örtüsü Özel Tasarım;2,00;0;2,00;2,00;984,94;0;0;0;984,94;0;895,40;0
+2024;;AdaHome Mobilya Madam Sandalye;;;;;AdaHome Mobilya Madam Sandalye;16,00;0;16,00;16,00;63.360,00;0;0;0;63.360,00;0;57.600,00;0
+2024;;AdaHome Mobilya Ottoman Büyük Berjer;;;;;AdaHome Mobilya Ottoman Büyük Berjer;1,00;0;1,00;1,00;4.950,00;0;0;0;4.950,00;0;4.500,00;0
+2024;;AdaHome Mobilya Ottoman Küçük Berjer;;;;;AdaHome Mobilya Ottoman Küçük Berjer;2,00;0;2,00;2,00;8.800,00;0;0;0;8.800,00;0;8.000,00;0
+2024;;AdaHome Mobilya Ottoman Küçük Berjer Özel Tasarım;;;;;AdaHome Mobilya Ottoman Küçük Berjer Özel Tasarım;2,00;0;2,00;2,00;9.900,00;0;0;0;9.900,00;0;4.500,00;0
+2024;;AdaHome Mobilya Yuvarlak Masa Kahve;;;;;AdaHome Mobilya Yuvarlak Masa Kahve;1,00;0;1,00;1,00;3.465,00;0;0;0;3.465,00;0;3.150,00;0
+2024;;AdaHome Mobilya Yuvarlak Masa Siyah;;;;;AdaHome Mobilya Yuvarlak Masa Siyah;3,00;0;3,00;3,00;10.395,00;0;0;0;10.395,00;0;9.450,00;0
+2024;;AdaHome Önlük;;;;;AdaHome Önlük;11,00;0;11,00;11,00;3.396,21;0;0;0;3.396,21;0;2.799,64;0
+2024;;AdaHome Önlük Yılbaşı;;;;;AdaHome Önlük Yılbaşı;1,00;0;1,00;1,00;305,82;0;0;0;305,82;0;278,02;0
+2024;;AdaHome Perde Aksesuarları;;;;;AdaHome Perde Aksesuarları;4,00;0;4,00;4,00;3.360,00;0;0;0;3.360,00;0;2.600,00;0
+2024;;AdaHome Perde Baskılı Keten Blackout;;;;;AdaHome Perde Baskılı Keten Blackout;3,00;0;3,00;3,00;1.793,98;0;0;0;1.793,98;0;1.087,27;0
+2024;;AdaHome Perde Renkli Keten Blackout;;;;;AdaHome Perde Renkli Keten Blackout;7,50;0;7,50;7,50;3.429,70;0;0;0;3.429,70;0;1.662,88;0
+2024;;AdaHome Pleksi Tepsi 24x40;;;;;AdaHome Pleksi Tepsi 24x40;2,00;1,00;1,00;1,00;1.304,72;0;652,36;0;652,36;0;1.087,27;543,63
+2024;;AdaHome Pleksi Tepsi 24x40 Özel Tasarım;;;;;AdaHome Pleksi Tepsi 24x40 Özel Tasarım;1,00;0;1,00;1,00;829,60;0;0;0;829,60;0;691,33;0
+2024;;AdaHome Pleksi Tepsi 25x25;;;;;AdaHome Pleksi Tepsi 25x25;18,00;1,00;17,00;17,00;26.338,03;0;575,62;0;25.762,41;0;8.454,81;479,68
+2024;;AdaHome Puf;;;;;AdaHome Puf;49,00;0;49,00;49,00;44.995,50;0;0;0;44.995,50;0;36.760,00;0
+2024;;AdaHome Puf Ayaklı;;;;;AdaHome Puf Ayaklı;7,00;2,00;5,00;5,00;6.790,50;0;1.760,00;0;5.030,50;0;6.173,18;1.600,00
+2024;;AdaHome Puf Özel Tasarım;;;;;AdaHome Puf Özel Tasarım;6,00;0;6,00;6,00;6.418,50;0;0;0;6.418,50;0;5.835,00;0
+2024;;AdaHome Puf Tepsisi Kahve;;;;;AdaHome Puf Tepsisi Kahve;7,00;0;7,00;7,00;3.564,11;0;0;0;3.564,11;0;1.620,10;0
+2024;;AdaHome Puf Tepsisi Siyah;;;;;AdaHome Puf Tepsisi Siyah;10,00;1,00;9,00;9,00;6.138,00;0;648,00;0;5.490,00;0;3.420,00;540,00
+2024;;AdaHome Puf Yılbaşı;;;;;AdaHome Puf Yılbaşı;1,00;0;1,00;1,00;1.039,50;0;0;0;1.039,50;0;945,00;0
+2024;;AdaHome Runner;;;;;AdaHome Runner;25,00;0;25,00;25,00;3.388,39;0;0;0;3.388,39;0;2.362,38;0
+2024;;AdaHome Şezlong Kumaşı Dış Mekan Fileli;;;;;AdaHome Şezlong Kumaşı Dış Mekan Fileli;1,00;0;1,00;1,00;396,00;0;0;0;396,00;0;360,00;0
+2024;;AdaHome Veranda&Adahome Katalog;;;;;AdaHome Veranda&Adahome Katalog;2,00;0;2,00;2,00;1.680,00;0;0;0;1.680,00;0;1.400,00;0
+2024;;Adapanel Akustik;;;;;AdaPanel Akustik Katalog;1,00;0;1,00;1,00;0;0;0;0;0;0;0;0
+2024;;AdaPanel Led Bar;;;;;AdaPanel Led Bar;30,00;0;30,00;30,00;11.102,35;0;0;0;11.102,35;0;627,81;0
+2024;;Adapanel MDF Akustik Katalog;;;;;AdaPanel MDF Akustik Katalog;3,00;0;3,00;3,00;1.080,00;0;0;0;1.080,00;0;600,00;0
+2024;;AdaPanel MDF S.T. Panel 900 Serisi (6 lı Paket);;;;;AdaPanel MDF S.T. Panel 900 Serisi (6 lı Paket);6,00;0;6,00;6,00;15.540,72;0;0;0;15.540,72;0;4.316,22;0
+2024;;AdaPanel MS Polimer Yapıştırıcı;;;;;AdaPanel MS Polimer Yapıştırıcı;144,00;0;144,00;144,00;14.555,03;0;0;0;14.555,03;0;424,25;0
+2024;;AdaPanel PS Çıta (Adetli Satış);;;;;AdaPanel PS Çıta (Adetli Satış);114,00;0;114,00;114,00;10.605,61;0;0;0;10.605,61;0;267,39;0
+2024;;AdaPanel PS Panel 100 serisi (12 li Paket);;;;;AdaPanel PS Panel 100 serisi (12 li Paket);20,00;0;20,00;56,00;43.605,31;0;0;0;43.605,31;0;7.295,99;0
+2024;;AdaPanel PS Panel 100 serisi (4 lü Paket);;;;;AdaPanel PS Panel 100 serisi (4 lü Paket);48,00;0;48,00;134,40;34.124,67;0;0;0;34.124,67;0;5.953,04;0
+2024;;AdaPanel PS Panel 200 serisi (18 li Paket);;;;;AdaPanel PS Panel 200 serisi (18 li Paket);25,00;0;25,00;70,00;80.285,43;0;0;0;80.285,43;0;37.426,11;0
+2024;;AdaPanel PS Panel 200 serisi (6 lı Paket);;;;;AdaPanel PS Panel 200 serisi (6 lı Paket);61,00;0;61,00;170,80;65.171,90;0;0;0;65.171,90;0;17.747,90;0
+2024;;AdaPanel PS Panel 300 serisi (18 li Paket);;;;;AdaPanel PS Panel 300 serisi (18 li Paket);2,00;0;2,00;5,60;6.436,78;0;0;0;6.436,78;0;2.681,99;0
+2024;;AdaPanel PS Panel 300 serisi (6 lı Paket);;;;;AdaPanel PS Panel 300 serisi (6 lı Paket);34,00;0;34,00;95,20;36.113,68;0;0;0;36.113,68;0;9.757,84;0
+2024;;AdaPanel PS Panel 400 serisi (18 li Paket);;;;;AdaPanel PS Panel 400 serisi (18 li Paket);39,00;0;39,00;109,20;126.710,40;0;0;0;126.710,40;0;37.842,10;0
+2024;;AdaPanel PS Panel 400 serisi (6 lı Paket);;;;;AdaPanel PS Panel 400 serisi (6 lı Paket);43,00;0;43,00;120,40;45.679,55;0;0;0;45.679,55;0;13.339,10;0
+2024;;Adapanel PS Panel Katalog;;;;;AdaPanel Ps Katalog;17,00;0;17,00;17,00;4.200,00;0;0;0;4.200,00;0;1.300,00;0
+2024;;Adapanel PS Panel Katalog;;;;;AdaPanel Süpürgelik ve Çıta Katalog;5,00;0;5,00;5,00;1.200,00;0;0;0;1.200,00;0;400,00;0
+2024;;AdaPanel PS Süpürgelik (Adetli Satış);;;;;AdaPanel PS Süpürgelik (Adetli Satış);21,00;0;21,00;21,00;4.393,52;0;0;0;4.393,52;0;347,70;0
+2024;;Adawall Duvar Kağ. Katalog;;;;;Duvar Kağıdı Katalog;340,00;0;340,00;340,00;222.360,00;0;0;0;222.360,00;0;86.700,00;0
+2024;;Adawall Duvar Kağıdı;;;;;10.0 MTR;3.978,00;246,00;3.732,00;3.732,00;3.146.854,85;0;194.054,50;0;2.952.800,35;0;671.818,42;80.940,49
+2024;;Adawall Duvar Kağıdı;;;;;15.6 MTR;30.885,00;1.175,00;29.710,00;29.710,00;24.329.092,59;0;866.270,68;0;23.462.821,91;0;4.370.693,09;179.608,12
+2024;;Adawall Duvar Kağıdı;;;;;Açık Metre;88,00;23,00;65,00;65,00;18.057,24;0;18.049,44;0;7,80;0;3.905,02;3.904,92
+2024;;Adawall Duvar Kağıdı;;;;;Numune Rulo;102,00;0;102,00;102,00;41,04;0;0;0;41,04;0;0,70;0
+2024;;AdaWall Duvar Kağıdı Ekipmanları;;;;;Adawall Duvar Kağıdı Uygulama Tezgahı;1,00;0;1,00;1,00;2.124,42;0;0;0;2.124,42;0;1.770,35;0
+2024;;AdaWall Duvar Kağıdı Ekipmanları;;;;;Ekipman;5,00;0;5,00;5,00;0;0;0;0;0;0;0;0
+2024;;AdaWall Katalog Poster Ürünü NW;;;;;AdaWall Katalog Dışı Poster Ürünü NW;20,12;0;20,12;20,12;3.893,16;0;0;0;3.893,16;0;644,51;0
+2024;;AdaWall Katalog Poster Ürünü NW;;;;;AdaWall Katalog Poster Ürünü NW;277,19;0;277,19;277,19;73.234,35;0;0;0;73.234,35;0;9.003,86;0
+2024;;AdaWall Katalog Poster Ürünü TEKSTİL;;;;;AdaWall Katalog Dışı Poster Ürünü TEKSTİL;31,38;0;31,38;31,38;7.693,97;0;0;0;7.693,97;0;1.227,90;0
+2024;;AdaWall Katalog Poster Ürünü TEKSTİL;;;;;AdaWall Katalog Poster Ürünü TEKSTİL;119,89;11,61;108,28;108,28;34.392,49;0;3.314,84;0;31.077,65;0;6.736,23;237,93
+2024;;Adawall Tutkal;;;;;200 Gram;61,00;0;61,00;61,00;2.287,77;0;0;0;2.287,77;0;94,28;0
+2024;;Adawall Tutkal;;;;;25 Kğ;113,00;0;113,00;113,00;275.230,98;0;0;0;275.230,98;0;27.385,26;0
+2024;;Diğer Ürünler;;;;;Company Brochure;39,00;0;39,00;39,00;274,32;0;0;0;274,32;0;75,10;0
+2024;;Diğer Ürünler;;;;;Çanta;100,00;0;100,00;100,00;12,00;0;0;0;12,00;0;0,10;0
+2024;;Duvar Tanıtım Panolar;;;;;Duvar Tanıtım Panoları;18,00;0;18,00;18,00;7.200,07;0;0;0;7.200,07;0;6.000,01;0
+2024;;İthal Katalog;;;;;Embro Katalog;2,00;0;2,00;2,00;4.800,00;0;0;0;4.800,00;0;4.000,00;0
+2024;;Mağaza Kurulum Mobilya;;;;;Mağaza Kurulum Mobilya;2,00;0;2,00;2,00;8.400,00;0;0;0;8.400,00;0;7.000,00;0
+2024;;Mobilya Dekorasyon;;;;;Mobilya Dekorasyon;4,00;0;4,00;4,00;6.000,00;0;0;0;6.000,00;0;5.000,00;0
+2024;;Tekstil Yan Ürünleri;;;;;Tekstil Sarf Malzeme;12,00;0;12,00;12,00;1.440,00;0;0;0;1.440,00;0;200,00;0
+Toplam;;;;;;;;37.331,08;1.466,61;35.864,47;36.354,07;28.957.292,34;0;1.087.576,70;0;27.869.715,64;0;5.584.380,22;269.581,59

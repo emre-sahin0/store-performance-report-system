@@ -26,6 +26,11 @@
             <p>{{ recommendations|safe }}</p>
         </div>
         {% endif %}
+        <div style="display: none;">
+            <h3>🔍 Debug Mod: Eksik Ürünler</h3>
+            <p>{{ missing_products }}</p>
+        </div>
+        
 
         {% if missing_products %}
     <div class="mt-5 alert alert-danger">
@@ -53,17 +58,18 @@
         <hr>
 
         <h3>Malzeme Grubu Filtrele</h3>
-        <form action="/" method="post" class="mt-3">
-            <input type="text" name="filter" class="form-control" placeholder="Örnek: AdaHome Dolgulu Yastık" required>
-            <button type="submit" class="btn btn-success mt-3">Filtrele</button>
-        </form>
+<form action="/" method="post" class="mt-3">
+    <input type="text" name="filter" class="form-control" placeholder="Örnek: AdaHome Dolgulu Yastık" required>
+    <button type="submit" class="btn btn-success mt-3">Filtrele</button>
+</form>
 
-        {% if filtered_table %}
-        <div class="mt-5">
-            <h3>"{{ selected_filter }}" İçeren Ürünler</h3>
-            {{ filtered_table|safe }}
-        </div>
-        {% endif %}
+{% if filtered_table %}
+    <div class="mt-5">
+        <h3>"{{ selected_filter }}" İçeren Ürünler</h3>
+        {{ filtered_table|safe }}
+    </div>
+{% endif %}
+
 
         {% endif %}
     </div>
