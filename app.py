@@ -1,29 +1,16 @@
-from flask import Flask, request, render_template, session
-import pandas as pd
+import json
 import os
+import pandas as pd
 import sys
-import signal
-import psutil  # Çalışan süreçleri yönetmek için
-from recommendations import generate_recommendations  # 📌 Öneri sistemini çağır
+import psutil
+from flask import Flask, request, render_template, redirect, url_for, session
+from recommendations import generate_recommendations
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 UPLOAD_FOLDER = 'uploads'
+RULES_FILE = "rules.json"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
-# 📌 Önceki Çalışan `app.exe` Süreçlerini Kapat
-def kill_existing_process():
-    current_pid = os.getpid()
-    for process in psutil.process_iter(attrs=['pid', 'name']):
-        try:
-            if "app.exe" in process.info['name'].lower() and process.info['pid'] != current_pid:
-                print(f"⚠️ Önceki çalışan `app.exe` süreci kapatılıyor: PID {process.info['pid']}")
-                proc = psutil.Process(process.info['pid'])
-                proc.terminate()  # Süreci sonlandır
-        except (psutil.NoSuchProcess, psutil.AccessDenied):
-            continue
-
-kill_existing_process()
 
 # 📌 Eğer PyInstaller ile çalışıyorsak, doğru dizini bul
 if getattr(sys, 'frozen', False):
@@ -33,23 +20,23 @@ else:
 
 KATALOG_DOSYA = os.path.join(application_path, "Kategoriler.csv")
 
-# 📌 Kategoriler.csv Dosyasının Gerçekten Yüklendiğini Kontrol Et
-print(f"📂 Kategori dosyası yolu: {KATALOG_DOSYA}")
-
-if not os.path.exists(KATALOG_DOSYA):
-    print("⚠️ Kategoriler.csv dosyası BULUNAMADI!")
-else:
-    print("✅ Kategoriler.csv dosyası bulundu!")
-
-# 📌 Ürün kataloğunu oku
+# 📌 Ürün kataloğunu oku veya boş set oluştur
 if os.path.exists(KATALOG_DOSYA):
     katalog_df = pd.read_csv(KATALOG_DOSYA, encoding="utf-8", sep=";", low_memory=False)
     if "Ürün Tanım" in katalog_df.columns:
-        urun_katalogu = set(katalog_df["Ürün Tanım"].astype(str).str.strip().str.lower())  
+        urun_katalogu = set(katalog_df["Ürün Tanım"].astype(str).str.strip().str.lower())
     else:
         urun_katalogu = set()
 else:
     urun_katalogu = set()
+
+def load_rules():
+    with open(RULES_FILE, "r", encoding="utf-8") as file:
+        return json.load(file)
+
+def save_rules(rules):
+    with open(RULES_FILE, "w", encoding="utf-8") as file:
+        json.dump(rules, file, indent=4, ensure_ascii=False)
 
 def detect_and_extract_columns(file_path):
     """CSV dosyasındaki 'Malzeme Grubu' ve 'Net Satış Miktarı' sütunlarını otomatik bulur ve temizler."""
@@ -62,7 +49,7 @@ def detect_and_extract_columns(file_path):
     malzeme_keywords = ["malzeme grubu", "ürün grubu", "malzeme adı"]
     satis_keywords = ["net satış miktarı", "satış miktar", "toplam satış"]
 
-    for i in range(50):
+    for i in range(50):  # İlk 50 satırı tarayarak başlığı bul
         row_values = df.iloc[i].astype(str).str.lower()
         for keyword in malzeme_keywords:
             if keyword in row_values.values:
@@ -70,7 +57,6 @@ def detect_and_extract_columns(file_path):
         for keyword in satis_keywords:
             if keyword in row_values.values:
                 satis_sutun = row_values[row_values == keyword].index[0]
-
         if malzeme_sutun is not None and satis_sutun is not None:
             data_start_row = i
             break
@@ -86,71 +72,53 @@ def detect_and_extract_columns(file_path):
 
     return df_cleaned
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/", methods=["GET", "POST"])
 def upload_file():
+    recommendations_html = None
     table_html = None
-    filtered_table_html = None
-    selected_filter = None
-    eksik_urunler_html = None
-    recommendations_html = None  
+    missing_products_html = None
 
-    if request.method == 'GET':
-        session.pop('data', None)
-        session.pop('recommendations', None)  # 📌 Önerileri temizle
-        session.pop('missing_products', None)  # 📌 Eksik ürünleri temizle
-
-    if request.method == 'POST' and 'file' in request.files:
+    if request.method == "POST" and 'file' in request.files:
         file = request.files['file']
         if file:
             file_path = os.path.join(UPLOAD_FOLDER, file.filename)
             file.save(file_path)
-
             try:
                 df_cleaned = detect_and_extract_columns(file_path)
-                session['data'] = df_cleaned.to_dict(orient="records")  # 📌 Verileri session'a kaydediyoruz!
-
-                table_html = df_cleaned.to_html(classes='table table-striped', index=False)
-
-                # 📌 Eksik ürünleri hesapla ve session içine kaydet
-                satilan_urunler = set(df_cleaned["Malzeme Grubu"].astype(str).str.strip().str.lower())
-                eksik_urunler = urun_katalogu - satilan_urunler
-                if eksik_urunler:
-                    eksik_urunler_html = "<br>".join(sorted(eksik_urunler))
-                session['missing_products'] = eksik_urunler_html  # 📌 Eksik ürünleri session içinde tut
-
-                # 📌 ÖNERİLERİ OLUŞTUR ve session içinde sakla
+                session['data'] = df_cleaned.to_dict(orient="records")
                 recommendations_html = generate_recommendations(df_cleaned)
-                session['recommendations'] = recommendations_html  # 📌 Önerileri de session içinde tut
-
+                table_html = df_cleaned.to_html(classes='table table-striped', index=False)
+                
+                # 📌 Eksik ürünleri hesapla
+                if urun_katalogu:
+                    satilan_urunler = set(df_cleaned["Malzeme Grubu"].astype(str).str.strip().str.lower())
+                    eksik_urunler = urun_katalogu - satilan_urunler
+                    missing_products_html = "<br>".join(sorted(eksik_urunler)) if eksik_urunler else "✅ Tüm ürünler satılmış!"
+                else:
+                    missing_products_html = "⚠️ Ürün kataloğu yüklenmediği için eksik ürünler hesaplanamıyor."
+                
             except Exception as e:
-                import traceback
-                hata_mesaji = traceback.format_exc()
-                print("⚠️ Hata oluştu:", hata_mesaji)
-                with open("log.txt", "a") as log:
-                    log.write("\n⚠️ Hata oluştu:\n" + hata_mesaji + "\n")
-                return f"Hata oluştu:<br><pre>{hata_mesaji}</pre>"
+                return f"Hata oluştu:<br><pre>{str(e)}</pre>"
+    return render_template("index.html", recommendations=recommendations_html, table=table_html, missing_products=missing_products_html)
 
-    # 📌 Eğer filtreleme butonuna basılmışsa ve veri zaten yüklenmişse
-    elif request.method == 'POST' and 'filter' in request.form:
-        selected_filter = request.form.get("filter")
-        if 'data' in session:
-            df_cleaned = pd.DataFrame(session['data'])  # 📌 Session'dan veriyi geri al!
-            table_html = df_cleaned.to_html(classes='table table-striped', index=False)
+@app.route("/admin", methods=["GET", "POST"])
+def admin_panel():
+    rules = load_rules()
+    if request.method == "POST":
+        action = request.form.get("action")
+        if action == "add":
+            keyword = request.form.get("keyword")
+            threshold = int(request.form.get("threshold"))
+            message = request.form.get("message")
+            rules.append({"keyword": keyword, "threshold": threshold, "message": message})
+            save_rules(rules)
+        elif action == "delete":
+            index = int(request.form.get("index"))
+            if 0 <= index < len(rules):
+                del rules[index]
+                save_rules(rules)
+        return redirect(url_for("admin_panel"))
+    return render_template("admin.html", rules=rules)
 
-            # 📌 Seçili filtreye göre verileri süz
-            filtered_df = df_cleaned[df_cleaned["Malzeme Grubu"].str.contains(selected_filter, case=False, na=False)]
-            filtered_table_html = filtered_df.to_html(classes='table table-bordered', index=False)
-
-            # 📌 Eksik ürünleri ve önerileri session'dan geri yükle
-            eksik_urunler_html = session.get('missing_products', None)
-            recommendations_html = session.get('recommendations', None)
-
-    return render_template('index.html', 
-                           table=table_html, 
-                           filtered_table=filtered_table_html, 
-                           selected_filter=selected_filter, 
-                           missing_products=eksik_urunler_html,
-                           recommendations=recommendations_html)  
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
