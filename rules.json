@@ -1,7 +1,22 @@
 [
     {
-        "keyword": "AdaHome Dolgulu Yastık",
-        "threshold": 200,
-        "message": "neden az sattın "
+        "keyword": "AdaPanel PS Panel 400 serisi (6 lı Paket)",
+        "threshold": 10,
+        "message": "aaaaa"
+    },
+    {
+        "keyword": "AdaHome Dolgulu Yastık ",
+        "threshold": 250,
+        "message": "merhaba"
+    },
+    {
+        "keyword": "AdaPanel PS Panel 300 serisi (18 li Paket)",
+        "threshold": 25,
+        "message": "nedennnnnnnnnnnnnnn"
+    },
+    {
+        "keyword": "adahome runner",
+        "threshold": 25,
+        "message": "2222222"
     }
 ]
