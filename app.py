@@ -18,7 +18,9 @@ if getattr(sys, 'frozen', False):
 else:
     application_path = os.getcwd()
 
-KATALOG_DOSYA = os.path.join(application_path, "Kategoriler.csv")
+KATALOG_DOSYA = "Kategoriler.csv"  # Hep dışarıdaki güncel dosyayı kullan
+
+
 
 # 📌 Ürün kataloğunu oku veya boş set oluştur
 if os.path.exists(KATALOG_DOSYA):

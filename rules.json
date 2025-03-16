@@ -5,13 +5,8 @@
         "message": "test"
     },
     {
-        "keyword": "AdaPanel PS Panel 200 serisi (18 li Paket)",
-        "threshold": 200,
-        "message": "test 333"
-    },
-    {
-        "keyword": "AdaHome Mobilya",
-        "threshold": 20,
-        "message": "aaaaa"
+        "keyword": "Mobilya Dekorasyon",
+        "threshold": 5,
+        "message": "89898"
     }
 ]

@@ -1,0 +1,33 @@
+﻿;;;;;;;;;;;;;;;;;;;
+Satış Performans Raporu;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+Veri parametreleri:;;;Başlangıç Tarihi: 01.01.2025 00:00:00;;;;;;;;;;;;;;;;
+;;;Bitiş Tarihi: 31.01.2025 23:59:59;;;;;;;;;;;;;;;;
+Filtre:;;;"Cari Hesap Eşittir ""ÖMER FARUK AKGÜL-İVA YAPI MARKET""";;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+Fatura Tarihi.Yıl;;Malzeme Grubu;;;;Malzeme.Teknik Tanım;Kategori;Toplam;;;;;;;;;;;
+;;;;;;;;Miktar;;;;Satış Tutarı;;;;;;Birim Fiyat;
+;;;;;;;;Miktar;;;;Satış Tutarı;;;;;;Birim Fiyat;
+;;;;;;;;Satış Miktar;İade Miktar;Net Satış Miktar;Net Satış Miktarı (Metre);Kdv Li Satış Tutar;Kdv Li Satış Dövizli Tutar;Kdv Li İade Tutar;Kdv Li İade Dövizli Tutar;Kdv Li Net Satış Tutar;Kdv Li Net Satış Dövizli Tutar;Birim Fiyat;İade Birim Fiyat
+2025;;;;;;;;745,86;76,00;669,86;740,06;656.384,05;0;64.814,55;0;591.569,50;0;198.009,13;18.587,24
+2025;;AdaHome Dolgulu Yastık Fırfırlı;;;;;AdaHome Dolgulu Yastık Fırfırlı;2,00;0;2,00;2,00;705,58;0;0;0;705,58;0;641,44;0
+2025;;AdaHome Puf Ayaklı;;;;;AdaHome Puf Ayaklı;1,00;0;1,00;1,00;1.336,50;0;0;0;1.336,50;0;1.215,00;0
+2025;;AdaPanel Led Bar;;;;;AdaPanel Led Bar;2,00;0;2,00;2,00;811,27;0;0;0;811,27;0;676,06;0
+2025;;AdaPanel MS Polimer Yapıştırıcı;;;;;AdaPanel MS Polimer Yapıştırıcı;48,00;0;48,00;48,00;5.108,50;0;0;0;5.108,50;0;88,69;0
+2025;;AdaPanel PS Panel 100 serisi (12 li Paket);;;;;AdaPanel PS Panel 100 serisi (12 li Paket);4,00;0;4,00;11,20;9.569,39;0;0;0;9.569,39;0;5.986,38;0
+2025;;AdaPanel PS Panel 100 serisi (4 lü Paket);;;;;AdaPanel PS Panel 100 serisi (4 lü Paket);8,00;0;8,00;22,40;6.375,03;0;0;0;6.375,03;0;2.656,27;0
+2025;;AdaPanel PS Panel 200 serisi (18 li Paket);;;;;AdaPanel PS Panel 200 serisi (18 li Paket);2,00;0;2,00;5,60;7.134,97;0;0;0;7.134,97;0;5.945,81;0
+2025;;AdaPanel PS Panel 200 serisi (6 lı Paket);;;;;AdaPanel PS Panel 200 serisi (6 lı Paket);4,00;0;4,00;11,20;4.775,86;0;0;0;4.775,86;0;1.989,94;0
+2025;;AdaPanel PS Panel 300 serisi (18 li Paket);;;;;AdaPanel PS Panel 300 serisi (18 li Paket);6,00;0;6,00;16,80;21.447,43;0;0;0;21.447,43;0;5.949,46;0
+2025;;AdaPanel PS Panel 300 serisi (6 lı Paket);;;;;AdaPanel PS Panel 300 serisi (6 lı Paket);5,00;0;5,00;14,00;5.940,36;0;0;0;5.940,36;0;2.969,86;0
+2025;;AdaPanel PS Panel 400 serisi (18 li Paket);;;;;AdaPanel PS Panel 400 serisi (18 li Paket);9,00;0;9,00;25,20;32.251,03;0;0;0;32.251,03;0;8.967,33;0
+2025;;AdaPanel PS Panel 400 serisi (6 lı Paket);;;;;AdaPanel PS Panel 400 serisi (6 lı Paket);1,00;0;1,00;2,80;1.188,56;0;0;0;1.188,56;0;990,47;0
+2025;;AdaPanel PS Panel Kapama 100 serisi (16 lı Paket);;;;;AdaPanel PS Panel Kapama 100 serisi (16 lı Paket);1,00;0;1,00;1,00;1.702,84;0;0;0;1.702,84;0;1.419,03;0
+2025;;Adapanel PS Panel Katalog;;;;;AdaPanel Ps Katalog;2,00;0;2,00;2,00;720,00;0;0;0;720,00;0;300,00;0
+2025;;Adawall Duvar Kağ. Katalog;;;;;Duvar Kağıdı Katalog;1,00;0;1,00;1,00;840,00;0;0;0;840,00;0;700,00;0
+2025;;Adawall Duvar Kağıdı;;;;;10.0 MTR;67,00;16,00;51,00;51,00;58.416,04;0;14.038,08;0;44.377,96;0;21.113,83;4.421,89
+2025;;Adawall Duvar Kağıdı;;;;;15.6 MTR;520,00;33,00;487,00;487,00;464.646,88;0;28.139,63;0;436.507,25;0;134.735,17;13.466,68
+2025;;Adawall Duvar Kağıdı;;;;;Açık Metre;27,00;27,00;0;0;22.636,84;0;22.636,84;0;0;0;698,67;698,67
+2025;;AdaWall Katalog Poster Ürünü TEKSTİL;;;;;AdaWall Katalog Dışı Poster Ürünü TEKSTİL;12,30;0;12,30;12,30;3.133,61;0;0;0;3.133,61;0;425,02;0
+2025;;AdaWall Katalog Poster Ürünü TEKSTİL;;;;;AdaWall Katalog Poster Ürünü TEKSTİL;23,56;0;23,56;23,56;7.643,36;0;0;0;7.643,36;0;540,70;0
+Toplam;;;;;;;;745,86;76,00;669,86;740,06;656.384,05;0;64.814,55;0;591.569,50;0;198.009,13;18.587,24
