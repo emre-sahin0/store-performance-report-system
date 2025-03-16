@@ -115,9 +115,16 @@ def upload_file():
                 session['data'] = df_cleaned.to_dict(orient="records")
                 recommendations_html = generate_recommendations(df_cleaned)
                 table_html = df_cleaned.to_html(classes='table table-striped', index=False)
+
+                if urun_katalogu:
+                     satilan_urunler = set(df_cleaned["Malzeme Grubu"].astype(str).str.strip().str.lower())
+                     eksik_urunler = urun_katalogu - satilan_urunler
+                     missing_products_html = "<br>".join(sorted(eksik_urunler)) if eksik_urunler else "✅ Tüm ürünler satılmış!"
+                else:
+                     missing_products_html = "⚠️ Ürün kataloğu yüklenmediği için eksik ürünler hesaplanamıyor."
             except Exception as e:
                 return f"Hata oluştu:<br><pre>{str(e)}</pre>"
-    return render_template("index.html", recommendations=recommendations_html, table=table_html)
+    return render_template("index.html", recommendations=recommendations_html, table=table_html, missing_products=missing_products_html)
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin_panel():
