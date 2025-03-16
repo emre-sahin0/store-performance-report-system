@@ -24,7 +24,7 @@ KATALOG_DOSYA = os.path.join(application_path, "Kategoriler.csv")
 if os.path.exists(KATALOG_DOSYA):
     katalog_df = pd.read_csv(KATALOG_DOSYA, encoding="utf-8", sep=";", low_memory=False)
     if "Ürün Tanım" in katalog_df.columns:
-        urun_katalogu = set(katalog_df["Ürün Tanım"].astype(str).str.strip().str.lower())
+        urun_katalogu = set(katalog_df["Ürün Tanım"].astype(str).str.strip())
     else:
         urun_katalogu = set()
 else:
@@ -67,9 +67,11 @@ def detect_and_extract_columns(file_path):
     df_cleaned = df.iloc[data_start_row + 1:, [malzeme_sutun, satis_sutun]]
     df_cleaned.columns = ["Malzeme Grubu", "Net Satış Miktarı"]
     df_cleaned = df_cleaned.dropna()
-    df_cleaned["Net Satış Miktarı"] = df_cleaned["Net Satış Miktarı"].astype(str) \
-        .str.replace(".", "", regex=False).str.replace(",", ".", regex=False).astype(float)
-
+    
+    # 🔹 Ondalıklı sayıları düzelt (önce virgülü noktaya çevir, sonra sayıya dönüştür)
+    df_cleaned["Net Satış Miktarı"] = df_cleaned["Net Satış Miktarı"].astype(str).str.replace(",", ".", regex=False)
+    df_cleaned["Net Satış Miktarı"] = pd.to_numeric(df_cleaned["Net Satış Miktarı"], errors='coerce')
+    
     return df_cleaned
 
 def generate_recommendations(df):
@@ -77,16 +79,23 @@ def generate_recommendations(df):
     rules = load_rules()
     recommendations = []
 
+    # 🔹 Aynı ürün isimlerini olduğu gibi tutarak gruplandır ve toplam satışları hesapla
+    grouped_df = df.groupby("Malzeme Grubu", as_index=False).sum()
+    print("✅ Toplam Satışlar:")
+    print(grouped_df)
+
     for rule in rules:
-        keyword = rule["keyword"].lower()
+        keyword = rule["keyword"].strip()
         threshold = rule["threshold"]
         message = rule["message"]
         
-        filtered_df = df[df["Malzeme Grubu"].str.contains(keyword, case=False, na=False)]
+        # 🔹 str.contains() regex olmadan filtreleme yap
+        filtered_df = grouped_df[grouped_df["Malzeme Grubu"].str.contains(keyword, case=False, na=False, regex=False)]
         total_sales = filtered_df["Net Satış Miktarı"].sum()
+        print(f"🔍 '{keyword}' için toplam satış: {total_sales}")
         
-        if total_sales < threshold:
-            recommendations.append(f"🔹 '{keyword}' içeren ürünlerin toplam satışı ({total_sales}) Eşik değerinin altında maalesef eşik değerimiz ({threshold}) Yapmanız gerekenler:. {message}")
+        if total_sales > 0 and total_sales < threshold:
+            recommendations.append(f"🔹 '{keyword}' içeren ürünlerin toplam satışı ({total_sales}) eşik değerinin altında ({threshold}). {message}")
     
     return "<br>".join(recommendations) if recommendations else "✅ Tüm ürünler yeterince satılmış görünüyor!"
 
@@ -106,20 +115,9 @@ def upload_file():
                 session['data'] = df_cleaned.to_dict(orient="records")
                 recommendations_html = generate_recommendations(df_cleaned)
                 table_html = df_cleaned.to_html(classes='table table-striped', index=False)
-
-
-                # 📌 Eksik ürünleri hesapla
-                if urun_katalogu:
-                    satilan_urunler = set(df_cleaned["Malzeme Grubu"].astype(str).str.strip().str.lower())
-                    eksik_urunler = urun_katalogu - satilan_urunler
-                    missing_products_html = "<br>".join(sorted(eksik_urunler)) if eksik_urunler else "✅ Tüm ürünler satılmış!"
-                else:
-                    missing_products_html = "⚠️ Ürün kataloğu yüklenmediği için eksik ürünler hesaplanamıyor."
-
             except Exception as e:
                 return f"Hata oluştu:<br><pre>{str(e)}</pre>"
-    return render_template("index.html", recommendations=recommendations_html, table=table_html, missing_products=missing_products_html)
-
+    return render_template("index.html", recommendations=recommendations_html, table=table_html)
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin_panel():
@@ -127,7 +125,7 @@ def admin_panel():
     if request.method == "POST":
         action = request.form.get("action")
         if action == "add":
-            keyword = request.form.get("keyword")
+            keyword = request.form.get("keyword").strip()
             threshold = int(request.form.get("threshold"))
             message = request.form.get("message")
             rules.append({"keyword": keyword, "threshold": threshold, "message": message})
