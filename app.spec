@@ -5,7 +5,7 @@ a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
-    datas=[('rules.json', '.'), ('templates', 'templates'), ('static', 'static')],
+    datas=[('Kategoriler.csv', '.'), ('rules.json', '.'), ('missing_rules.json', '.'), ('templates', 'templates'), ('static', 'static')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
