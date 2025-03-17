@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.secret_key = "supersecretkey"
 UPLOAD_FOLDER = 'uploads'
 RULES_FILE = "rules.json"
+MISSING_RULES_FILE = "missing_rules.json"  # Satılmayan ürünler için öneri dosyası
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 KATALOG_DOSYA = "Kategoriler.csv"
@@ -32,6 +33,21 @@ def load_rules():
             json.dump([], file)
     with open(RULES_FILE, "r", encoding="utf-8") as file:
         return json.load(file)
+
+def save_rules(rules):
+    with open(RULES_FILE, "w", encoding="utf-8") as file:
+        json.dump(rules, file, indent=4, ensure_ascii=False)
+
+def load_missing_rules():
+    if not os.path.exists(MISSING_RULES_FILE):
+        with open(MISSING_RULES_FILE, "w", encoding="utf-8") as file:
+            json.dump([], file)
+    with open(MISSING_RULES_FILE, "r", encoding="utf-8") as file:
+        return json.load(file)
+
+def save_missing_rules(missing_rules):
+    with open(MISSING_RULES_FILE, "w", encoding="utf-8") as file:
+        json.dump(missing_rules, file, indent=4, ensure_ascii=False)
 
 def detect_and_extract_columns(file_path):
     df = pd.read_csv(file_path, encoding="utf-8", sep=";", low_memory=False, header=None)
@@ -59,17 +75,14 @@ def detect_and_extract_columns(file_path):
     df_cleaned.columns = ["Malzeme Grubu", "Net Satış Miktarı"]
     df_cleaned = df_cleaned.dropna()
 
-    # 🔹 HATA DÜZELTME: Sayıları düzgün şekilde temizle ve çevir
     df_cleaned["Net Satış Miktarı"] = df_cleaned["Net Satış Miktarı"].astype(str) \
     .str.replace(r"[^\d,]", "", regex=True) \
     .str.replace(".", "", regex=False) \
     .str.replace(",", ".", regex=False)
 
     df_cleaned["Net Satış Miktarı"] = pd.to_numeric(df_cleaned["Net Satış Miktarı"], errors='coerce')  
- 
 
     return df_cleaned
-
 def generate_recommendations(df):
     rules = load_rules()
     recommendations = []
@@ -90,11 +103,22 @@ def generate_recommendations(df):
     return "<br>".join(recommendations) if recommendations else "✅ Tüm ürünler yeterince satılmış görünüyor!"
 
 
-# 📌 Satış oranlarını ve kategorilere göre satışları içeren Pie Chart oluşturma
-def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
-    fig, axs = plt.subplots(1, 3, figsize=(22, 8))  # Grafikleri daha büyük yaptık
+def generate_missing_recommendations(satilmayan_urunler):
+    missing_rules = load_missing_rules()
+    recommendations = []
 
-    # ✅ Genel Satış Oranları Pie Chart
+    for rule in missing_rules:
+        keyword = rule["keyword"].strip()
+        message = rule["message"]
+
+        if any(keyword.lower() in urun.lower() for urun in satilmayan_urunler):
+            recommendations.append(f"🔹 '{keyword}' ile ilgili öneri: {message}")
+
+    return "<br>".join(recommendations) if recommendations else "✅ Satılmayan ürünler için özel bir öneri bulunmamaktadır."
+
+def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
+    fig, axs = plt.subplots(1, 3, figsize=(22, 8))  
+
     genel_labels = ['Satılan Ürünler', 'Satılmayan Ürünler']
     genel_sizes = [len(satilan_urunler), len(satilmayan_urunler)]
     genel_colors = ['#ff6347', '#4caf50']
@@ -104,7 +128,6 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
                colors=genel_colors, explode=explode, shadow=True, textprops={'fontsize': 14})
     axs[0].set_title("📊 Genel Satış Oranları", fontsize=18, fontweight='bold')
 
-    # ✅ Satılan Ürünlerin Kategori Dağılımı Pie Chart
     categories = ["AdaHome", "AdaPanel", "AdaWall"]
     category_sales = {cat: df[df["Malzeme Grubu"].str.contains(cat, case=False, na=False)]["Net Satış Miktarı"].sum() for cat in categories}
 
@@ -112,28 +135,19 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
                startangle=140, colors=['#ffcc00', '#66b3ff', '#99ff99'], textprops={'fontsize': 14})
     axs[1].set_title("📈 Satılan Ürünlerin Kategori Dağılımı", fontsize=18, fontweight='bold')
 
-    # ✅ Satılmayan Ürünlerin Kategori Dağılımı Pie Chart
     satilmayan_category_counts = {cat: sum(1 for urun in satilmayan_urunler if cat in urun) for cat in categories}
 
-    # Eğer tüm kategoriler 0 ise, farklı bir mesaj göster
-    if sum(satilmayan_category_counts.values()) == 0:
-        axs[2].text(0.5, 0.5, "✅ Tüm Ürünler Satılmış", fontsize=16, ha='center', va='center', transform=axs[2].transAxes)
-        axs[2].set_xticks([])
-        axs[2].set_yticks([])
-        axs[2].set_title("📉 Satılmayan Ürünler Yok", fontsize=18, fontweight='bold')
-    else:
-        axs[2].pie(
-            list(satilmayan_category_counts.values()), 
-            labels=[label if value > 0 else "N/A" for label, value in satilmayan_category_counts.items()],
-            autopct=lambda p: f'{p:.1f}%' if p > 0 else '',
-            startangle=140, colors=['#ffcc00', '#66b3ff', '#99ff99'], textprops={'fontsize': 14}
-        )
-        axs[2].set_title("📉 Satılmayan Ürünlerin Kategori Dağılımı", fontsize=18, fontweight='bold')
+    axs[2].pie(
+        list(satilmayan_category_counts.values()), 
+        labels=list(satilmayan_category_counts.keys()),
+        autopct='%1.1f%%',
+        startangle=140, colors=['#ffcc00', '#66b3ff', '#99ff99'], textprops={'fontsize': 14}
+    )
+    axs[2].set_title("📉 Satılmayan Ürünlerin Kategori Dağılımı", fontsize=18, fontweight='bold')
 
-    # ✅ Grafik kaydet ve encode et
-    plt.tight_layout()  # Grafiklerin birbirine çok yakın olmamasını sağlar
+    plt.tight_layout()  
     img = io.BytesIO()
-    plt.savefig(img, format='png', dpi=100)  # DPI artırıldı
+    plt.savefig(img, format='png', dpi=100)  
     img.seek(0)
     pie_chart_url = base64.b64encode(img.getvalue()).decode('utf8')
     plt.close(fig)
@@ -143,6 +157,7 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
 @app.route("/", methods=["GET", "POST"])
 def upload_file():
     recommendations_html = None
+    missing_recommendations_html = None
     table_html = None
     missing_products_html = None
     pie_chart_url = None
@@ -156,25 +171,38 @@ def upload_file():
                 df_cleaned = detect_and_extract_columns(file_path)
                 session['data'] = df_cleaned.to_dict(orient="records")
                 table_html = df_cleaned.to_html(classes='table table-striped', index=False)
-
+                recommendations_html = generate_recommendations(df_cleaned)
+                
                 satilan_urunler = set(df_cleaned["Malzeme Grubu"].astype(str).str.strip())
                 satilmayan_urunler = urun_katalogu - satilan_urunler
 
-                # **ÖNERİLERİN TEKRAR EKLENMESİ**
-                recommendations_html = generate_recommendations(df_cleaned)
-
+                missing_products_html = "<br>".join(sorted(satilmayan_urunler)) if satilmayan_urunler else "✅ Tüm ürünler satılmış!"
+                missing_recommendations_html = generate_missing_recommendations(satilmayan_urunler)
                 pie_chart_url = generate_pie_chart(satilan_urunler, satilmayan_urunler, df_cleaned)
-
-                if urun_katalogu:
-                    missing_products_html = "<br>".join(sorted(satilmayan_urunler)) if satilmayan_urunler else "✅ Tüm ürünler satılmış!"
-                else:
-                    missing_products_html = "⚠️ Ürün kataloğu yüklenmediği için eksik ürünler hesaplanamıyor."
 
             except Exception as e:
                 return f"Hata oluştu:<br><pre>{str(e)}</pre>"
     
-    return render_template("index.html", table=table_html, recommendations=recommendations_html, missing_products=missing_products_html, pie_chart_url=pie_chart_url)
+    return render_template("index.html", table=table_html, missing_products=missing_products_html, missing_recommendations=missing_recommendations_html,recommendations=recommendations_html, pie_chart_url=pie_chart_url)
 
+@app.route("/admin", methods=["GET", "POST"])
+def admin_panel():
+    rules = load_rules()
+    missing_rules = load_missing_rules()
+
+    if request.method == "POST":
+        action = request.form.get("action")
+
+        if action == "add_missing":
+            keyword = request.form.get("missing_keyword").strip()
+            message = request.form.get("missing_message")
+            missing_rules.append({"keyword": keyword, "message": message})
+            save_missing_rules(missing_rules)
+
+        return redirect(url_for("admin_panel"))
+
+    return render_template("admin.html", rules=rules, missing_rules=missing_rules)
 
 if __name__ == "__main__":
     app.run(debug=True)
+

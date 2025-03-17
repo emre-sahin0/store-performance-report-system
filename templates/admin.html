@@ -101,6 +101,45 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">✅ Ekle</button>
         </form>
+        <h3>📉 Satılmayan Ürünler İçin Öneriler</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Anahtar Kelime</th>
+            <th>Öneri Mesajı</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rule in missing_rules %}
+        <tr>
+            <td>{{ rule.keyword }}</td>
+            <td>{{ rule.message }}</td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="action" value="delete_missing">
+                    <input type="hidden" name="missing_index" value="{{ loop.index0 }}">
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Yeni Satılmayan Ürün Önerisi Ekle</h3>
+<form method="post" class="mt-3">
+    <input type="hidden" name="action" value="add_missing">
+    <div class="mb-3">
+        <label>Anahtar Kelime:</label>
+        <input type="text" name="missing_keyword" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Öneri Mesajı:</label>
+        <input type="text" name="missing_message" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
     </div>
 </body>
 </html>
