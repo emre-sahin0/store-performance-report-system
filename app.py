@@ -231,15 +231,35 @@ def admin_panel():
     if request.method == "POST":
         action = request.form.get("action")
 
-        if action == "add_missing":
+        if action == "add":
+            keyword = request.form.get("keyword").strip()
+            threshold = int(request.form.get("threshold"))
+            message = request.form.get("message")
+            rules.append({"keyword": keyword, "threshold": threshold, "message": message})
+            save_rules(rules)
+
+        elif action == "delete":
+            index = int(request.form.get("index"))
+            if 0 <= index < len(rules):
+                del rules[index]
+                save_rules(rules)
+
+        elif action == "add_missing":
             keyword = request.form.get("missing_keyword").strip()
             message = request.form.get("missing_message")
             missing_rules.append({"keyword": keyword, "message": message})
             save_missing_rules(missing_rules)
 
+        elif action == "delete_missing":
+            index = int(request.form.get("missing_index"))
+            if 0 <= index < len(missing_rules):
+                del missing_rules[index]
+                save_missing_rules(missing_rules)
+
         return redirect(url_for("admin_panel"))
 
     return render_template("admin.html", rules=rules, missing_rules=missing_rules)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

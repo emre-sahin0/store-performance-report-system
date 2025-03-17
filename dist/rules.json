@@ -3,10 +3,5 @@
         "keyword": "AdaWall Katalog Poster Ürünü TEKSTİL",
         "threshold": 100,
         "message": "test"
-    },
-    {
-        "keyword": "Mobilya Dekorasyon",
-        "threshold": 5,
-        "message": "89898"
     }
 ]

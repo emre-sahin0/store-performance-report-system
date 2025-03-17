@@ -1,17 +1,7 @@
 [
     {
-        "keyword": "Mobilya Dekorasyon",
-        "threshold": 5,
-        "message": "89898"
-    },
-    {
-        "keyword": "AdaHome Perde Baskılı Keten Blackout",
-        "threshold": 10,
-        "message": "keten sat"
-    },
-    {
         "keyword": "AdaHome Dolgulu Yastık",
-        "threshold": 400,
-        "message": "fhfjkj"
+        "threshold": 600,
+        "message": "neden satmadın"
     }
 ]
