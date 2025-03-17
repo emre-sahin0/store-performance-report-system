@@ -116,9 +116,22 @@ def generate_missing_recommendations(satilmayan_urunler):
 
     return "<br>".join(recommendations) if recommendations else "✅ Satılmayan ürünler için özel bir öneri bulunmamaktadır."
 
-def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
-    fig, axs = plt.subplots(1, 3, figsize=(22, 8))  
+import matplotlib.pyplot as plt
+import numpy as np
+import io
+import base64
 
+import matplotlib.pyplot as plt
+import numpy as np
+import io
+import base64
+
+def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
+    fig, axs = plt.subplots(3, 1, figsize=(12, 18))  # Alt alta grafikler
+    categories = ["AdaHome", "AdaPanel", "AdaWall"]
+    colors = ['#ffcc00', '#66b3ff', '#99ff99']
+
+    # ✅ Genel Satış Oranları Pie Chart
     genel_labels = ['Satılan Ürünler', 'Satılmayan Ürünler']
     genel_sizes = [len(satilan_urunler), len(satilmayan_urunler)]
     genel_colors = ['#ff6347', '#4caf50']
@@ -128,31 +141,56 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
                colors=genel_colors, explode=explode, shadow=True, textprops={'fontsize': 14})
     axs[0].set_title("📊 Genel Satış Oranları", fontsize=18, fontweight='bold')
 
-    categories = ["AdaHome", "AdaPanel", "AdaWall"]
+    # ✅ Satılan Ürünlerin Kategori Dağılımı Pie Chart
     category_sales = {cat: df[df["Malzeme Grubu"].str.contains(cat, case=False, na=False)]["Net Satış Miktarı"].sum() for cat in categories}
+    total_sales = sum(category_sales.values())
+
+    if total_sales > 0:
+        category_percentages = {cat: (val / total_sales) * 100 for cat, val in category_sales.items()}
+    else:
+        category_percentages = {cat: 0 for cat in categories}  # Eğer toplam 0 ise, hata oluşmasını önlemek için
 
     axs[1].pie(list(category_sales.values()), labels=list(category_sales.keys()), autopct='%1.1f%%', 
-               startangle=140, colors=['#ffcc00', '#66b3ff', '#99ff99'], textprops={'fontsize': 14})
+               startangle=140, colors=colors, textprops={'fontsize': 14})
     axs[1].set_title("📈 Satılan Ürünlerin Kategori Dağılımı", fontsize=18, fontweight='bold')
 
+    # ✅ Satılan Ürünlerin Legend'ı (Pie Chart'ın Altına Doğru Hesaplanmış Yüzdelerle)
+    for i, cat in enumerate(categories):
+        label = f"{cat}: {round(category_percentages[cat], 1)}%"
+        axs[1].text(0.5, -0.4 - (i * 0.1), label, ha="center", fontsize=14, bbox=dict(facecolor=colors[i], alpha=0.5), transform=axs[1].transAxes)
+
+    # ✅ Satılmayan Ürünlerin Kategori Dağılımı Pie Chart
     satilmayan_category_counts = {cat: sum(1 for urun in satilmayan_urunler if cat in urun) for cat in categories}
+    total_missing = sum(satilmayan_category_counts.values())
+
+    if total_missing > 0:
+        missing_percentages = {cat: (val / total_missing) * 100 for cat, val in satilmayan_category_counts.items()}
+    else:
+        missing_percentages = {cat: 0 for cat in categories}  # Eğer toplam 0 ise hata olmaması için
 
     axs[2].pie(
         list(satilmayan_category_counts.values()), 
         labels=list(satilmayan_category_counts.keys()),
         autopct='%1.1f%%',
-        startangle=140, colors=['#ffcc00', '#66b3ff', '#99ff99'], textprops={'fontsize': 14}
+        startangle=140, colors=colors, textprops={'fontsize': 14}
     )
     axs[2].set_title("📉 Satılmayan Ürünlerin Kategori Dağılımı", fontsize=18, fontweight='bold')
 
+    # ✅ Satılmayan Ürünlerin Legend'ı (Pie Chart'ın Altına Doğru Hesaplanmış Yüzdelerle)
+    for i, cat in enumerate(categories):
+        label = f"{cat}: {round(missing_percentages[cat], 1)}%"
+        axs[2].text(0.5, -0.4 - (i * 0.1), label, ha="center", fontsize=14, bbox=dict(facecolor=colors[i], alpha=0.5), transform=axs[2].transAxes)
+
+    # ✅ Grafik kaydet ve encode et
     plt.tight_layout()  
     img = io.BytesIO()
-    plt.savefig(img, format='png', dpi=100)  
+    plt.savefig(img, format='png', dpi=120)  
     img.seek(0)
     pie_chart_url = base64.b64encode(img.getvalue()).decode('utf8')
     plt.close(fig)
 
     return pie_chart_url
+
 
 @app.route("/", methods=["GET", "POST"])
 def upload_file():
