@@ -30,11 +30,12 @@ pip install flask pandas matplotlib
 
 python app.py
 Başarıyla çalıştırıldığında, aşağıdaki gibi bir çıktı göreceksiniz:
+ * Running on http://127.0.0.1:5000
+Tarayıcınızda http://127.0.0.1:5000 adresini açarak projeyi kullanabilirsiniz. 🎯
 
 ![Ekran görüntüsü 2025-03-21 103058](https://github.com/user-attachments/assets/bedff903-c771-4f29-9daa-328882d8ff7a)
 
- * Running on http://127.0.0.1:5000
-Tarayıcınızda http://127.0.0.1:5000 adresini açarak projeyi kullanabilirsiniz. 🎯
+
 ![Ekran görüntüsü 2025-03-21 102429](https://github.com/user-attachments/assets/ce0be5b2-8f77-4b75-8b98-6153ae70509d)
 ![Ekran görüntüsü 2025-03-21 102441](https://github.com/user-attachments/assets/1ac2268b-99e4-44f4-a548-7f20f79211c1)
 ![Ekran görüntüsü 2025-03-21 103156](https://github.com/user-attachments/assets/6917eca8-ea92-4a31-b0c1-be0de482323f)
