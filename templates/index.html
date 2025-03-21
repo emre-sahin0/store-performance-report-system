@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #bb97dd, #fad0c4);
+            background: linear-gradient(135deg, #45b6ae, #50b950);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -42,8 +42,8 @@
         }
 
         .alert-warning {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
+            background: #f1ebc1;
+            border: 1px solid #eaeaea;
             font-size: 18px;
             padding: 15px;
             font-weight: bold;
@@ -63,7 +63,15 @@
 
 <body>
     <div class="container mt-5">
-        <h2>📂 Satış Verilerini Yükleyin</h2>
+       
+        <h2>📂 Satış Verilerini Yükleyin
+            <div class="d-flex justify-content-end mb-3">
+                <a href="/admin" class="btn btn-warning shadow-sm">🔧 Admin Paneli</a>
+            </div>
+        </h2>
+        <!-- 🔧 Admin Paneli Butonu -->
+       
+
 
         <!-- 🟢 Aylık Rapor Yükleme -->
         <h3 class="mt-4">📆 Aylık Satış Verisi Yükleyin</h3>
@@ -71,6 +79,7 @@
             <input type="file" name="file" class="form-control" required>
             <button type="submit" class="btn btn-success mt-3 w-100">📤 Aylık Dosya Yükle</button>
         </form>
+        
 
         <!-- 🔵 Yıllık Rapor Yükleme -->
         <h3 class="mt-4">📅 Yıllık Satış Verisi Yükleyin</h3>
@@ -125,12 +134,14 @@ document.getElementById("toggleButton").addEventListener("click", function() {
 });
 </script>
 
-        {% if recommendations %}
-        <div class="mt-5 alert alert-warning text-center">
-            <h3>💡 Az Satılan Ürünler İçin Öneriler</h3>
-            <p style="font-size: 20px;">{{ recommendations|safe }}</p>
+
+
+    {% if recommendations %}
+        <div class="alert alert-warning">
+        <h4>💡 <strong>Az Satılan Ürünler İçin Öneriler</strong></h4>
+        <p style="font-size: 16px;">{{ recommendations|safe }}</p>
         </div>
-        {% endif %}
+    {% endif %}
 
         {% if missing_products %}
 <div class="mt-5 alert alert-danger text-center">

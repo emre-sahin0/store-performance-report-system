@@ -17,7 +17,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 KATALOG_DOSYA = "Kategoriler.csv"
 
-# 📌 Ürün kataloğunu oku veya boş set oluştur
+#  Ürün kataloğunu oku veya boş set oluştur
 if os.path.exists(KATALOG_DOSYA):
     katalog_df = pd.read_csv(KATALOG_DOSYA, encoding="utf-8", sep=";", low_memory=False)
     if "Ürün Tanım" in katalog_df.columns:
@@ -98,7 +98,9 @@ def generate_recommendations(df):
         total_sales = filtered_df["Net Satış Miktarı"].sum()
         
         if total_sales > 0 and total_sales < threshold:
-            recommendations.append(f"🔹 '{keyword}' içeren ürünlerin toplam satışı ({total_sales}) eşik değerinin altında ({threshold}). {message}")
+            recommendations.append(
+                f"🔹 <b>'{keyword}'</b> içeren ürünlerin toplam satışı <b>({total_sales})</b>  Eşik değerimizin <b>({threshold})</b> altında. Önerimiz;. {message}"
+            )
     
     return "<br>".join(recommendations) if recommendations else "✅ Tüm ürünler yeterince satılmış görünüyor!"
 
@@ -122,7 +124,7 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
     categories = ["AdaHome", "AdaPanel", "AdaWall"]
     colors = ['#ffcc00', '#66b3ff', '#99ff99']
 
-    # ✅ Genel Satış Oranları Pie Chart
+    #  Genel Satış Oranları Pie Chart
     genel_labels = ['Satılan Ürünler', 'Satılmayan Ürünler']
     genel_sizes = [len(satilan_urunler), len(satilmayan_urunler)]
     genel_colors = ['#ff6347', '#4caf50']
@@ -132,7 +134,7 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
                colors=genel_colors, explode=explode, shadow=True, textprops={'fontsize': 14})
     axs[0].set_title("📊 Genel Satış Oranları", fontsize=18, fontweight='bold')
 
-    # ✅ Satılan Ürünlerin Kategori Dağılımı Pie Chart
+    # Satılan Ürünlerin Kategori Dağılımı Pie Chart
     category_sales = {cat: df[df["Malzeme Grubu"].str.contains(cat, case=False, na=False)]["Net Satış Miktarı"].sum() for cat in categories}
     total_sales = sum(category_sales.values())
 
@@ -145,12 +147,12 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
                startangle=140, colors=colors, textprops={'fontsize': 14})
     axs[1].set_title("📈 Satılan Ürünlerin Kategori Dağılımı", fontsize=18, fontweight='bold')
 
-    # ✅ Satılan Ürünlerin Legend'ı (Pie Chart'ın Altına Doğru Hesaplanmış Yüzdelerle)
+    #  Satılan Ürünlerin Legend'ı (Pie Chart'ın Altına Doğru Hesaplanmış Yüzdelerle)
     for i, cat in enumerate(categories):
         label = f"{cat}: {round(category_percentages[cat], 1)}%"
         axs[1].text(0.5, -0.4 - (i * 0.1), label, ha="center", fontsize=14, bbox=dict(facecolor=colors[i], alpha=0.5), transform=axs[1].transAxes)
 
-    # ✅ Satılmayan Ürünlerin Kategori Dağılımı Pie Chart
+    #  Satılmayan Ürünlerin Kategori Dağılımı Pie Chart
     satilmayan_category_counts = {cat: sum(1 for urun in satilmayan_urunler if cat in urun) for cat in categories}
     total_missing = sum(satilmayan_category_counts.values())
 
@@ -167,12 +169,12 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
     )
     axs[2].set_title("📉 Satılmayan Ürünlerin Kategori Dağılımı", fontsize=18, fontweight='bold')
 
-    # ✅ Satılmayan Ürünlerin Legend'ı (Pie Chart'ın Altına Doğru Hesaplanmış Yüzdelerle)
+    #  Satılmayan Ürünlerin Legend'ı (Pie Chart'ın Altına Doğru Hesaplanmış Yüzdelerle)
     for i, cat in enumerate(categories):
         label = f"{cat}: {round(missing_percentages[cat], 1)}%"
         axs[2].text(0.5, -0.4 - (i * 0.1), label, ha="center", fontsize=14, bbox=dict(facecolor=colors[i], alpha=0.5), transform=axs[2].transAxes)
 
-    # ✅ Grafik kaydet ve encode et
+    #  Grafik kaydet ve encode et
     plt.tight_layout()  
     img = io.BytesIO()
     plt.savefig(img, format='png', dpi=120)  
