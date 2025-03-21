@@ -116,15 +116,6 @@ def generate_missing_recommendations(satilmayan_urunler):
 
     return "<br>".join(recommendations) if recommendations else "✅ Satılmayan ürünler için özel bir öneri bulunmamaktadır."
 
-import matplotlib.pyplot as plt
-import numpy as np
-import io
-import base64
-
-import matplotlib.pyplot as plt
-import numpy as np
-import io
-import base64
 
 def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
     fig, axs = plt.subplots(3, 1, figsize=(12, 18))  # Alt alta grafikler
@@ -196,7 +187,7 @@ def generate_pie_chart(satilan_urunler, satilmayan_urunler, df):
 def upload_file():
     recommendations_html = None
     missing_recommendations_html = None
-    table_html = None
+    table_data = None  # HTML tarafına gönderilecek liste
     missing_products_html = None
     pie_chart_url = None
 
@@ -208,7 +199,8 @@ def upload_file():
             try:
                 df_cleaned = detect_and_extract_columns(file_path)
                 session['data'] = df_cleaned.to_dict(orient="records")
-                table_html = df_cleaned.to_html(classes='table table-striped', index=False)
+                
+                table_data = df_cleaned.to_dict(orient="records")  # Tablodaki veriler listeye çevrildi
                 recommendations_html = generate_recommendations(df_cleaned)
                 
                 satilan_urunler = set(df_cleaned["Malzeme Grubu"].astype(str).str.strip())
@@ -221,7 +213,7 @@ def upload_file():
             except Exception as e:
                 return f"Hata oluştu:<br><pre>{str(e)}</pre>"
     
-    return render_template("index.html", table=table_html, missing_products=missing_products_html, missing_recommendations=missing_recommendations_html,recommendations=recommendations_html, pie_chart_url=pie_chart_url)
+    return render_template("index.html", table_data=table_data, missing_products=missing_products_html, missing_recommendations=missing_recommendations_html, recommendations=recommendations_html, pie_chart_url=pie_chart_url)
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin_panel():

@@ -1,0 +1,81 @@
+﻿;;;;;;;;;;;;;;;;;;;
+Satış Performans Raporu;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+Veri parametreleri:;;;Başlangıç Tarihi: 01.12.2024 00:00:00;;;;;;;;;;;;;;;;
+;;;Bitiş Tarihi: 28.02.2025 00:00:00;;;;;;;;;;;;;;;;
+Filtre:;;;"Cari Hesap Eşittir ""ÖMER FARUK AKGÜL-İVA YAPI MARKET""";;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+Fatura Tarihi.Yıl;;Malzeme Grubu;;;;Kategori;Malzeme Grubu;Toplam;;;;;;;;;;;
+;;;;;;;;Miktar;;;;Satış Tutarı;;;;;;Birim Fiyat;
+;;;;;;;;Miktar;;;;Satış Tutarı;;;;;;Birim Fiyat;
+;;;;;;;;Satış Miktar;İade Miktar;Net Satış Miktar;Net Satış Miktarı (Metre);Kdv Li Satış Tutar;Kdv Li Satış Dövizli Tutar;Kdv Li İade Tutar;Kdv Li İade Dövizli Tutar;Kdv Li Net Satış Tutar;Kdv Li Net Satış Dövizli Tutar;Birim Fiyat;İade Birim Fiyat
+2024;;;;;;;;693,00;5,00;688,00;702,40;562.371,21;0;4.988,40;0;557.382,81;0;153.136,78;4.157,00
+2024;;AdaHome Dolgulu Yastık Fırfırlı;;;;AdaHome Dolgulu Yastık Fırfırlı;YASTIKLAR;2,00;0;2,00;2,00;688,31;0;0;0;688,31;0;312,87;0
+2024;;AdaHome Dolgulu Yastık Fırfırlı Özel Tasarım;;;;AdaHome Dolgulu Yastık Fırfırlı Özel Tasarım;YASTIKLAR;2,00;0;2,00;2,00;823,09;0;0;0;823,09;0;374,13;0
+2024;;AdaHome Masa Örtüsü;;;;AdaHome Masa Örtüsü;MASA ÖRTÜSÜ;1,00;0;1,00;1,00;418,97;0;0;0;418,97;0;380,88;0
+2024;;AdaHome Mobilya Madam Sandalye Özel Tasarım;;;;AdaHome Mobilya Madam Sandalye Özel Tasarım;153.05.001.001;6,00;0;6,00;6,00;32.670,00;0;0;0;32.670,00;0;4.950,00;0
+2024;;AdaHome Runner;;;;AdaHome Runner;RUNNER;13,00;0;13,00;13,00;1.790,58;0;0;0;1.790,58;0;1.000,96;0
+2024;;AdaHome Runner Özel Tasarım;;;;AdaHome Runner Özel Tasarım;RUNNER;1,00;0;1,00;1,00;209,58;0;0;0;209,58;0;190,53;0
+2024;;AdaHome Runner Yılbaşı;;;;AdaHome Runner Yılbaşı;RUNNER;2,00;0;2,00;2,00;274,36;0;0;0;274,36;0;249,42;0
+2024;;AdaPanel MS Polimer Yapıştırıcı;;;;AdaPanel MS Polimer Yapıştırıcı;ADAPANEL MS YAPIŞTIRI;24,00;0;24,00;24,00;2.502,96;0;0;0;2.502,96;0;86,91;0
+2024;;AdaPanel PS Panel 100 serisi (4 lü Paket);;;;AdaPanel PS Panel 100 serisi (4 lü Paket);APS100;1,00;0;1,00;2,80;712,73;0;0;0;712,73;0;593,94;0
+2024;;AdaPanel PS Panel 200 serisi (18 li Paket);;;;AdaPanel PS Panel 200 serisi (18 li Paket);APS200;7,00;0;7,00;19,60;22.620,60;0;0;0;22.620,60;0;5.376,62;0
+2024;;AdaPanel PS Süpürgelik (Adetli Satış);;;;AdaPanel PS Süpürgelik (Adetli Satış);APC;40,00;0;40,00;40,00;6.530,69;0;0;0;6.530,69;0;136,06;0
+2024;;Adawall Duvar Kağ. Katalog;;;;Duvar Kağıdı Katalog;01 ADAWALL KATALOG;6,00;0;6,00;6,00;4.440,00;0;0;0;4.440,00;0;1.900,00;0
+2024;;Adawall Duvar Kağıdı;;;;10.0 MTR;04 INDIGO;1,00;0;1,00;1,00;839,08;0;0;0;839,08;0;699,23;0
+2024;;Adawall Duvar Kağıdı;;;;10.0 MTR;08 ADAKIDS;7,00;0;7,00;7,00;5.856,34;0;0;0;5.856,34;0;3.487,78;0
+2024;;Adawall Duvar Kağıdı;;;;10.0 MTR;12 OCTAGON;5,00;0;5,00;5,00;4.208,38;0;0;0;4.208,38;0;701,40;0
+2024;;Adawall Duvar Kağıdı;;;;10.0 MTR;13 SEYYAH;1,00;0;1,00;1,00;832,93;0;0;0;832,93;0;694,11;0
+2024;;Adawall Duvar Kağıdı;;;;10.0 MTR;14 DANTE;6,00;0;6,00;6,00;5.028,24;0;0;0;5.028,24;0;1.400,35;0
+2024;;Adawall Duvar Kağıdı;;;;15.6 MTR;03 ALFA;29,00;0;29,00;29,00;24.327,21;0;0;0;24.327,21;0;4.192,51;0
+2024;;Adawall Duvar Kağıdı;;;;15.6 MTR;07 SEVEN;38,00;1,00;37,00;37,00;31.980,41;0;997,68;0;30.982,73;0;14.034,06;831,40
+2024;;Adawall Duvar Kağıdı;;;;15.6 MTR;09 TROPICANO;36,00;0;36,00;36,00;30.280,25;0;0;0;30.280,25;0;11.188,39;0
+2024;;Adawall Duvar Kağıdı;;;;15.6 MTR;11 BETA;2,00;0;2,00;2,00;1.673,54;0;0;0;1.673,54;0;697,31;0
+2024;;Adawall Duvar Kağıdı;;;;15.6 MTR;15 VERA;300,00;1,00;299,00;299,00;252.150,41;0;997,68;0;251.152,73;0;49.667,97;831,40
+2024;;Adawall Duvar Kağıdı;;;;15.6 MTR;16 ROKA;98,00;3,00;95,00;95,00;82.063,96;0;2.993,04;0;79.070,92;0;29.984,83;2.494,20
+2024;;Adawall Duvar Kağıdı;;;;15.6 MTR;17 OMEGA;49,00;0;49,00;49,00;41.107,49;0;0;0;41.107,49;0;16.095,51;0
+2024;;Adawall Duvar Kağıdı;;;;15.6 MTR;19 HUE;4,00;0;4,00;4,00;3.355,11;0;0;0;3.355,11;0;2.795,93;0
+2024;;AdaWall Duvar Kağıdı Ekipmanları;;;;Adawall Duvar Kağıdı Uygulama Tezgahı;153.01.002;2,00;0;2,00;2,00;4.588,75;0;0;0;4.588,75;0;1.911,98;0
+2024;;Adawall Tutkal;;;;200 Gram;DYK200;10,00;0;10,00;10,00;397,24;0;0;0;397,24;0;33,10;0
+2025;;;;;;;;1.299,86;94,00;1.205,86;1.294,06;1.125.447,26;0;80.383,49;0;1.045.063,77;0;318.201,49;25.812,30
+2025;;AdaHome Dolgulu Yastık Fırfırlı;;;;AdaHome Dolgulu Yastık Fırfırlı;YASTIKLAR;7,00;0;7,00;7,00;2.495,43;0;0;0;2.495,43;0;2.268,59;0
+2025;;AdaHome Masa Örtüsü;;;;AdaHome Masa Örtüsü;MASA ÖRTÜSÜ;3,00;0;3,00;3,00;1.289,13;0;0;0;1.289,13;0;1.171,94;0
+2025;;AdaHome Puf;;;;AdaHome Puf;AYAKSIZ PUF;2,00;0;2,00;2,00;2.248,40;0;0;0;2.248,40;0;2.044,00;0
+2025;;AdaHome Puf Ayaklı;;;;AdaHome Puf Ayaklı;AYAKLI PUF;2,00;0;2,00;2,00;2.673,00;0;0;0;2.673,00;0;2.430,00;0
+2025;;AdaHome Puf Ayaklı Özel Tasarım;;;;AdaHome Puf Ayaklı Özel Tasarım;AYAKLI PUF;1,00;0;1,00;1,00;1.500,40;0;0;0;1.500,40;0;1.364,00;0
+2025;;AdaHome Puf Özel Tasarım;;;;AdaHome Puf Özel Tasarım;AYAKSIZ PUF;1,00;0;1,00;1,00;1.214,40;0;0;0;1.214,40;0;1.104,00;0
+2025;;AdaHome Puf Tepsisi Kahve;;;;AdaHome Puf Tepsisi Kahve;153.05.001.001;2,00;0;2,00;2,00;1.584,00;0;0;0;1.584,00;0;1.440,00;0
+2025;;AdaHome Runner;;;;AdaHome Runner;RUNNER;9,00;0;9,00;9,00;1.287,99;0;0;0;1.287,99;0;1.041,20;0
+2025;;AdaHome Yastık Kılıfı Fırfırlı Özel Tasarım ;;;;AdaHome Yastık Kılıfı Fırfırlı Özel Tasarım;YASTIK KILIFLARI;21,00;0;21,00;21,00;1.732,50;0;0;0;1.732,50;0;75,00;0
+2025;;AdaPanel Led Bar;;;;AdaPanel Led Bar;DİĞER;2,00;0;2,00;2,00;811,27;0;0;0;811,27;0;676,06;0
+2025;;AdaPanel MS Polimer Yapıştırıcı;;;;AdaPanel MS Polimer Yapıştırıcı;ADAPANEL MS YAPIŞTIRI;60,00;0;60,00;60,00;6.410,66;0;0;0;6.410,66;0;179,12;0
+2025;;AdaPanel PS Panel 100 serisi (12 li Paket);;;;AdaPanel PS Panel 100 serisi (12 li Paket);APS100;4,00;0;4,00;11,20;9.569,39;0;0;0;9.569,39;0;5.986,38;0
+2025;;AdaPanel PS Panel 100 serisi (4 lü Paket);;;;AdaPanel PS Panel 100 serisi (4 lü Paket);APS100;8,00;0;8,00;22,40;6.375,03;0;0;0;6.375,03;0;2.656,27;0
+2025;;AdaPanel PS Panel 200 serisi (18 li Paket);;;;AdaPanel PS Panel 200 serisi (18 li Paket);APS200;2,00;0;2,00;5,60;7.134,97;0;0;0;7.134,97;0;5.945,81;0
+2025;;AdaPanel PS Panel 200 serisi (6 lı Paket);;;;AdaPanel PS Panel 200 serisi (6 lı Paket);APS200;4,00;0;4,00;11,20;4.775,86;0;0;0;4.775,86;0;1.989,94;0
+2025;;AdaPanel PS Panel 300 serisi (18 li Paket);;;;AdaPanel PS Panel 300 serisi (18 li Paket);APS300;8,00;0;8,00;22,40;28.708,07;0;0;0;28.708,07;0;11.999,98;0
+2025;;AdaPanel PS Panel 300 serisi (6 lı Paket);;;;AdaPanel PS Panel 300 serisi (6 lı Paket);APS300;5,00;0;5,00;14,00;5.940,36;0;0;0;5.940,36;0;2.969,86;0
+2025;;AdaPanel PS Panel 400 serisi (18 li Paket);;;;AdaPanel PS Panel 400 serisi (18 li Paket);APS400;11,00;0;11,00;30,80;39.588,59;0;0;0;39.588,59;0;15.081,96;0
+2025;;AdaPanel PS Panel 400 serisi (6 lı Paket);;;;AdaPanel PS Panel 400 serisi (6 lı Paket);APS400;7,00;0;7,00;19,60;8.503,58;0;0;0;8.503,58;0;4.038,39;0
+2025;;AdaPanel PS Panel Kapama 100 serisi (16 lı Paket);;;;AdaPanel PS Panel Kapama 100 serisi (16 lı Paket);APSK100;1,00;0;1,00;1,00;1.702,84;0;0;0;1.702,84;0;1.419,03;0
+2025;;Adapanel PS Panel Katalog;;;;AdaPanel Ps Katalog;01 PANEL KATALOGLAR;2,00;0;2,00;2,00;720,00;0;0;0;720,00;0;300,00;0
+2025;;Adawall Duvar Kağ. Katalog;;;;Duvar Kağıdı Katalog;01 ADAWALL KATALOG;1,00;0;1,00;1,00;840,00;0;0;0;840,00;0;700,00;0
+2025;;Adawall Duvar Kağıdı;;;;10.0 MTR;05 KALINKA;11,00;2,00;9,00;9,00;6.675,31;0;1.200,33;0;5.474,98;0;1.510,63;500,14
+2025;;Adawall Duvar Kağıdı;;;;10.0 MTR;08 ADAKIDS;20,00;0;20,00;20,00;18.041,89;0;0;0;18.041,89;0;7.514,45;0
+2025;;Adawall Duvar Kağıdı;;;;10.0 MTR;12 OCTAGON;6,00;5,00;1,00;1,00;5.378,02;0;4.208,38;0;1.169,64;0;2.240,64;701,40
+2025;;Adawall Duvar Kağıdı;;;;10.0 MTR;13 SEYYAH;2,00;0;2,00;2,00;1.788,85;0;0;0;1.788,85;0;745,36;0
+2025;;Adawall Duvar Kağıdı;;;;10.0 MTR;14 DANTE;110,00;11,00;99,00;99,00;99.293,64;0;9.829,70;0;89.463,94;0;17.211,67;3.720,50
+2025;;Adawall Duvar Kağıdı;;;;10.0 MTR;98 EPHES;3,00;0;3,00;3,00;2.718,54;0;0;0;2.718,54;0;2.265,45;0
+2025;;Adawall Duvar Kağıdı;;;;15.6 MTR;03 ALFA;66,00;9,00;57,00;57,00;59.446,41;0;7.634,66;0;51.811,75;0;15.781,74;4.276,42
+2025;;Adawall Duvar Kağıdı;;;;15.6 MTR;07 SEVEN;152,00;10,00;142,00;142,00;136.610,75;0;8.989,65;0;127.621,10;0;28.489,79;2.987,45
+2025;;Adawall Duvar Kağıdı;;;;15.6 MTR;09 TROPICANO;28,00;3,00;25,00;25,00;25.252,96;0;2.570,99;0;22.681,97;0;8.221,98;2.142,49
+2025;;Adawall Duvar Kağıdı;;;;15.6 MTR;11 BETA;18,00;0;18,00;18,00;16.386,84;0;0;0;16.386,84;0;2.255,41;0
+2025;;Adawall Duvar Kağıdı;;;;15.6 MTR;15 VERA;434,00;12,00;422,00;422,00;390.453,48;0;10.507,31;0;379.946,17;0;98.956,14;4.397,35
+2025;;Adawall Duvar Kağıdı;;;;15.6 MTR;16 ROKA;155,00;11,00;144,00;144,00;139.584,17;0;9.444,80;0;130.139,37;0;49.457,95;3.587,21
+2025;;Adawall Duvar Kağıdı;;;;15.6 MTR;17 OMEGA;59,00;4,00;55,00;55,00;52.887,75;0;3.360,83;0;49.526,92;0;14.970,27;2.800,68
+2025;;Adawall Duvar Kağıdı;;;;Açık Metre;99 ÖZEL ÜRETİMLER (OEM);27,00;27,00;0;0;22.636,84;0;22.636,84;0;0;0;698,67;698,67
+2025;;AdaWall Katalog Poster Ürünü TEKSTİL;;;;AdaWall Katalog Dışı Poster Ürünü TEKSTİL;DİGER POSTER TEKS;12,30;0;12,30;12,30;3.133,61;0;0;0;3.133,61;0;425,02;0
+2025;;AdaWall Katalog Poster Ürünü TEKSTİL;;;;AdaWall Katalog Poster Ürünü TEKSTİL;FIJI POSTER TEKS;11,72;0;11,72;11,72;3.802,21;0;0;0;3.802,21;0;270,35;0
+2025;;AdaWall Katalog Poster Ürünü TEKSTİL;;;;AdaWall Katalog Poster Ürünü TEKSTİL;SEASONS POSTER TEKS;11,84;0;11,84;11,84;3.841,15;0;0;0;3.841,15;0;270,35;0
+2025;;Adawall Tutkal;;;;200 Gram;DYK200;10,00;0;10,00;10,00;408,97;0;0;0;408,97;0;34,08;0
+Toplam;;;;;;;;1.992,86;99,00;1.893,86;1.996,46;1.687.818,47;0;85.371,89;0;1.602.446,58;0;471.338,27;29.969,30

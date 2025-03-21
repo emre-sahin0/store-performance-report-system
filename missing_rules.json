@@ -1,10 +1,14 @@
 [
     {
-        "keyword": "AdaHome Amerikan Servis",
-        "message": "servis neden satmadın "
+        "keyword": "AdaWall Katalog Poster",
+        "message": "Katalog poster ürünlerinin satılmamasının birkaç muhtemel sebebi vardır. Birincisi, ürün konumlandırmasında ve tanımında bir sorun olabilir. Katalog poster ürünü ifadesi müşteride net bir algı yaratmamış, ürünün tam olarak ne işe yaradığı anlaşılamamış olabilir. Müşteriler muhtemelen bu ürünü sıradan bir poster veya duvar kağıdı katalog görseli olarak algıladılar ve dekoratif bir değerini göremediler. İkinci olarak, bu posterler için hedef kitle hatası yaşanmış olabilir:"
     },
     {
         "keyword": "AdaHome Dolgulu Yastık",
-        "message": "neden hiç satmadın"
+        "message": "Eğer yastık satışlarında bir ilerleme kat edemediysen, Yastık kılıfı "
+    },
+    {
+        "keyword": "AdaHome Amerikan Servis",
+        "message": "Bu ürünün düşük satış sebebi muhtemelen yeterince tanıtılmaması ve müşterilerin ürünü görmemesidir. Bu nedenle, ürünün görünürlüğünü artıracak kampanyalar planlanmalıdır."
     }
 ]

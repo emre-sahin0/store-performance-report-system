@@ -63,37 +63,105 @@
 
 <body>
     <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2>📂 CSV Dosyası Yükleyin</h2>
-            <a href="/admin" class="btn btn-warning">🔧 Admin Paneli</a>
-        </div>
+        <h2>📂 Satış Verilerini Yükleyin</h2>
 
-        <form action="/" method="post" enctype="multipart/form-data" class="mt-3">
+        <!-- 🟢 Aylık Rapor Yükleme -->
+        <h3 class="mt-4">📆 Aylık Satış Verisi Yükleyin</h3>
+        <form action="/" method="post" enctype="multipart/form-data">
             <input type="file" name="file" class="form-control" required>
-            <button type="submit" class="btn btn-primary mt-3 w-100">📤 Yükle</button>
+            <button type="submit" class="btn btn-success mt-3 w-100">📤 Aylık Dosya Yükle</button>
         </form>
 
-        {% if table %}
-        <div class="mt-5">
-            <h3>📊 Yüklenen Dosya Verileri</h3>
-            <div class="table-responsive">{{ table|safe }}</div>
-        </div>
-        {% endif %}
+        <!-- 🔵 Yıllık Rapor Yükleme -->
+        <h3 class="mt-4">📅 Yıllık Satış Verisi Yükleyin</h3>
+        <form action="/upload_yearly" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" class="form-control" required>
+            <button type="submit" class="btn btn-info mt-3 w-100">📤 Yıllık Dosya Yükle</button>
+        </form>
+
+        {% if table_data %}
+<div class="mt-5">
+    <h3>📊 Yüklenen Dosya Verileri</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Malzeme Grubu</th>
+                    <th>Net Satış Miktarı</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table_data[:5] %}
+                <tr>
+                    <td>{{ row['Malzeme Grubu'] }}</td>
+                    <td>{{ row['Net Satış Miktarı'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tbody id="hiddenRows" style="display: none;">
+                {% for row in table_data[5:] %}
+                <tr>
+                    <td>{{ row['Malzeme Grubu'] }}</td>
+                    <td>{{ row['Net Satış Miktarı'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-primary w-100" id="toggleButton">Daha Fazla Göster</button>
+    </div>
+</div>
+{% endif %}
+
+<script>
+document.getElementById("toggleButton").addEventListener("click", function() {
+    var hiddenRows = document.getElementById("hiddenRows");
+    if (hiddenRows.style.display === "none") {
+        hiddenRows.style.display = "table-row-group";
+        this.textContent = "Daha Az Göster";
+    } else {
+        hiddenRows.style.display = "none";
+        this.textContent = "Daha Fazla Göster";
+    }
+});
+</script>
 
         {% if recommendations %}
         <div class="mt-5 alert alert-warning text-center">
-            <h3>💡 Öneriler</h3>
+            <h3>💡 Az Satılan Ürünler İçin Öneriler</h3>
             <p style="font-size: 20px;">{{ recommendations|safe }}</p>
         </div>
         {% endif %}
 
         {% if missing_products %}
-        <div class="mt-5 alert alert-danger text-center">
-            <h3>⚠️ Eksik Ürünler</h3>
-            <p>Bu ürünleri hiç satmamışsın:</p>
-            <div class="table-responsive">{{ missing_products|safe }}</div>
-        </div>
-        {% endif %}
+<div class="mt-5 alert alert-danger text-center">
+    <h3>⚠️ Eksik Ürünler</h3>
+    <p>Bu ürünleri hiç satmamışsınız:</p>
+    <ul>
+        {% for product in missing_products.split('<br>')[:5] %}
+            <li>{{ product }}</li>
+        {% endfor %}
+    </ul>
+    <ul id="hiddenMissingRows" style="display: none;">
+        {% for product in missing_products.split('<br>')[5:] %}
+            <li>{{ product }}</li>
+        {% endfor %}
+    </ul>
+    <button class="btn btn-danger w-100" id="toggleMissingButton">Daha Fazla Göster</button>
+</div>
+{% endif %}
+
+<script>
+document.getElementById("toggleMissingButton").addEventListener("click", function() {
+    var hiddenMissingRows = document.getElementById("hiddenMissingRows");
+    if (hiddenMissingRows.style.display === "none") {
+        hiddenMissingRows.style.display = "block";
+        this.textContent = "Daha Az Göster";
+    } else {
+        hiddenMissingRows.style.display = "none";
+        this.textContent = "Daha Fazla Göster";
+    }
+});
+</script>
         {% if missing_recommendations %}
         <div class="mt-5 alert alert-info text-center">
             <h3>📢 Satılmayan Ürünler İçin Öneriler</h3>

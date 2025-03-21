@@ -1,7 +1,17 @@
 [
     {
-        "keyword": "AdaHome Dolgulu Yastık",
-        "threshold": 600,
-        "message": "neden satmadın"
+        "keyword": "AdaHome Döşemelik Kumaşlar",
+        "threshold": 10,
+        "message": "Mağazalarda 4 farklı döşemelik el kartelamız var. Gelen müşterilere sizde döşemelik kumaş olduğunu söylüyor musunuz ? Mobilya üreticileri ile iş birliği yapabilirsiniz."
+    },
+    {
+        "keyword": "Adawall Duvar Kağıdı",
+        "threshold": 100,
+        "message": "Adawall Duvarında Gör uygulamamız ile müşterilere duvar kağıdını ev ortamlarında deneme imkânı sunabilirsiniz. Müşterinin karar sürecini  hızlandırır. Bölgenizde en çok tercih edilen duvar kağıdı renk ve desenlerini biliyor musunuz. Mimar ve müteahhitlerle projeler hakkında görüşüyor, onlara özel numune setleri sunuyor musunuz?"
+    },
+    {
+        "keyword": "Adawall Duvar Kağıdı",
+        "threshold": 1500,
+        "message": "Adawall Duvarında Gör uygulamamız ile müşterilere duvar kağıdını ev ortamlarında deneme imkânı sunabilirsiniz. Müşterinin karar sürecini hızlandırır. Bölgenizde en çok tercih edilen duvar kağıdı renk ve desenlerini biliyor musunuz. Mimar ve müteahhitlerle projeler hakkında görüşüyor, onlara özel numune setleri sunuyor musunuz?"
     }
 ]
