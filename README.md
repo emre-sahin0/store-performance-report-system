@@ -33,9 +33,8 @@ Başarıyla çalıştırıldığında, aşağıdaki gibi bir çıktı göreceksi
  * Running on http://127.0.0.1:5000
 Tarayıcınızda http://127.0.0.1:5000 adresini açarak projeyi kullanabilirsiniz. 🎯
 
-![Ekran görüntüsü 2025-03-21 103058](https://github.com/user-attachments/assets/bedff903-c771-4f29-9daa-328882d8ff7a)
 
-
-![Ekran görüntüsü 2025-03-21 102429](https://github.com/user-attachments/assets/ce0be5b2-8f77-4b75-8b98-6153ae70509d)
-![Ekran görüntüsü 2025-03-21 102441](https://github.com/user-attachments/assets/1ac2268b-99e4-44f4-a548-7f20f79211c1)
-![Ekran görüntüsü 2025-03-21 103156](https://github.com/user-attachments/assets/6917eca8-ea92-4a31-b0c1-be0de482323f)
+![Ekran görüntüsü 2025-03-23 033114](https://github.com/user-attachments/assets/d994985e-5a41-4495-b5db-25ccf6133349)
+![Ekran görüntüsü 2025-03-23 033130](https://github.com/user-attachments/assets/4f8c6cc2-147b-4c6c-90cf-f9ebfee26924)
+![Ekran görüntüsü 2025-03-23 033143](https://github.com/user-attachments/assets/5eb019c2-cfbf-4e16-ae4c-4ad396d19a91)
+![Ekran görüntüsü 2025-03-23 033155](https://github.com/user-attachments/assets/7d2e0faa-2fd1-499d-81ff-e0e487b6a94a)
