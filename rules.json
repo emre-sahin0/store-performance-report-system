@@ -38,5 +38,10 @@
         "keyword": "Adahome",
         "threshold": 300,
         "message": "AdaHome ürünleri, konsept halinde sergilenerek çapraz satışa uygun alanlar oluşturulmalı. Örneğin, perde ve döşemelik kumaşlar aynı alanda teşhir edilmeli.Müşterilere, duvar kağıdı seçimleri ile birlikte tekstil ürünleri de sunulmalı ve uyumlu kombinler önerilmeli.Duvar kağıdınız ile uyumlu döşemelik kumaş ister misiniz?” gibi yönlendirici sorularla ek satış fırsatları oluşturulmalı.Kurumsal projelere uygun özel koleksiyonlar oluşturularak toplu satış fırsatları değerlendirilmeli.Veranda ve AdaHome katalogları müşterilere mutlaka sunulmalı ve projelerinde kullanabilecekleri geniş ürün seçenekleri hatırlatılmalı."
+    },
+    {
+        "keyword": "AdaHome Dolgulu Yastık",
+        "threshold": 35,
+        "message": "aaaaa"
     }
 ]

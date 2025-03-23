@@ -2,192 +2,250 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Yükleme ve Analiz</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background: linear-gradient(135deg, #45b6ae, #50b950);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Yükleme ve Analiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #5299f5, #50b950);
+      min-height: 100vh;
+      padding: 30px;
+    }
 
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            max-width: 900px;
-            width: 100%;
-        }
+    .dashboard-container {
+      max-width: 1400px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        h2,
-        h3 {
-            color: #343a40;
-            font-weight: bold;
-            text-align: center;
-        }
+    h2, h3 {
+      color: #343a40;
+      font-weight: bold;
+    }
 
-        .btn-primary {
-            background: #ff758c;
-            border: none;
-        }
+    .section-title {
+      border-bottom: 2px solid #ccc;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+    }
+    
+  .two-columns {
+    column-count: 2;
+    column-gap: 30px;
+  }
 
-        .btn-primary:hover {
-            background: #e84370;
-        }
 
-        .alert-warning {
-            background: #f1ebc1;
-            border: 1px solid #eaeaea;
-            font-size: 18px;
-            padding: 15px;
-            font-weight: bold;
-            border-radius: 10px;
-        }
 
-        .alert-danger {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            font-size: 18px;
-            padding: 15px;
-            font-weight: bold;
-            border-radius: 10px;
-        }
-    </style>
+    .chart-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+
+    .filter-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container mt-5">
-       
-        <h2>📂 Satış Verilerini Yükleyin
-            <div class="d-flex justify-content-end mb-3">
-                <a href="/admin" class="btn btn-warning shadow-sm">🔧 Admin Paneli</a>
-            </div>
-        </h2>
-        <!-- 🔧 Admin Paneli Butonu -->
-       
-
-
-        <!-- 🟢 Aylık Rapor Yükleme -->
-        <h3 class="mt-4">📆 Aylık Satış Verisi Yükleyin</h3>
-        <form action="/" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" class="form-control" required>
-            <button type="submit" class="btn btn-success mt-3 w-100">📤 Aylık Dosya Yükle</button>
-        </form>
-        
-
-        <!-- 🔵 Yıllık Rapor Yükleme -->
-        <h3 class="mt-4">📅 Yıllık Satış Verisi Yükleyin</h3>
-        <form action="/upload_yearly" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" class="form-control" required>
-            <button type="submit" class="btn btn-info mt-3 w-100">📤 Yıllık Dosya Yükle</button>
-        </form>
-
-        {% if table_data %}
-<div class="mt-5">
-    <h3>📊 Yüklenen Dosya Verileri</h3>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Malzeme Grubu</th>
-                    <th>Net Satış Miktarı</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in table_data[:5] %}
-                <tr>
-                    <td>{{ row['Malzeme Grubu'] }}</td>
-                    <td>{{ row['Net Satış Miktarı'] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            <tbody id="hiddenRows" style="display: none;">
-                {% for row in table_data[5:] %}
-                <tr>
-                    <td>{{ row['Malzeme Grubu'] }}</td>
-                    <td>{{ row['Net Satış Miktarı'] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <button class="btn btn-primary w-100" id="toggleButton">Daha Fazla Göster</button>
+  <div class="dashboard-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>📂 Satış Verilerini Yükleyin</h2>
+      <a href="/admin" class="btn btn-warning">🔧 Admin Paneli</a>
     </div>
-</div>
-{% endif %}
 
-<script>
-document.getElementById("toggleButton").addEventListener("click", function() {
-    var hiddenRows = document.getElementById("hiddenRows");
-    if (hiddenRows.style.display === "none") {
-        hiddenRows.style.display = "table-row-group";
-        this.textContent = "Daha Az Göster";
-    } else {
-        hiddenRows.style.display = "none";
-        this.textContent = "Daha Fazla Göster";
-    }
-});
-</script>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <h4 class="section-title">📆 Aylık Satış Verisi</h4>
+        <form action="/" method="post" enctype="multipart/form-data">
+          <input type="file" name="file" class="form-control mb-2" required>
+          <button type="submit" class="btn btn-success w-100">📤 Aylık Dosya Yükle</button>
+        </form>
+      </div>
 
+      <div class="col-md-6">
+        <h4 class="section-title">📅 Yıllık Satış Verisi</h4>
+        <form action="/upload_yearly" method="post" enctype="multipart/form-data">
+          <input type="file" name="file" class="form-control mb-2" required>
+          <button type="submit" class="btn btn-info w-100">📤 Yıllık Dosya Yükle</button>
+        </form>
+      </div>
+    </div>
 
-
-    {% if recommendations %}
-        <div class="alert alert-warning">
-        <h4>💡 <strong>Az Satılan Ürünler İçin Öneriler</strong></h4>
-        <p style="font-size: 16px;">{{ recommendations|safe }}</p>
-        </div>
+    {% if table_data %}
+    <div class="mt-5">
+      <h4 class="section-title">📊 Yüklenen Dosya Verileri</h4>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Malzeme Grubu</th>
+              <th>Net Satış Miktarı</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in table_data[:5] %}
+            <tr>
+              <td>{{ row['Malzeme Grubu'] }}</td>
+              <td>{{ row['Net Satış Miktarı'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tbody id="hiddenRows" style="display: none;">
+            {% for row in table_data[5:] %}
+            <tr>
+              <td>{{ row['Malzeme Grubu'] }}</td>
+              <td>{{ row['Net Satış Miktarı'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <button class="btn btn-danger w-100" id="toggleButton">Daha Fazla Göster</button>
+      </div>
+    </div>
     {% endif %}
 
-        {% if missing_products %}
-<div class="mt-5 alert alert-danger text-center">
-    <h3>⚠️ Eksik Ürünler</h3>
-    <p>Bu ürünleri hiç satmamışsınız:</p>
-    <ul>
-        {% for product in missing_products.split('<br>')[:5] %}
-            <li>{{ product }}</li>
-        {% endfor %}
-    </ul>
-    <ul id="hiddenMissingRows" style="display: none;">
-        {% for product in missing_products.split('<br>')[5:] %}
-            <li>{{ product }}</li>
-        {% endfor %}
-    </ul>
-    <button class="btn btn-danger w-100" id="toggleMissingButton">Daha Fazla Göster</button>
-</div>
-{% endif %}
+    <script>
+      document.getElementById("toggleButton").addEventListener("click", function () {
+        const hiddenRows = document.getElementById("hiddenRows");
+        if (hiddenRows.style.display === "none") {
+          hiddenRows.style.display = "table-row-group";
+          this.textContent = "Daha Az Göster";
+        } else {
+          hiddenRows.style.display = "none";
+          this.textContent = "Daha Fazla Göster";
+        }
+      });
+    </script>
 
-<script>
-document.getElementById("toggleMissingButton").addEventListener("click", function() {
-    var hiddenMissingRows = document.getElementById("hiddenMissingRows");
-    if (hiddenMissingRows.style.display === "none") {
-        hiddenMissingRows.style.display = "block";
-        this.textContent = "Daha Az Göster";
-    } else {
-        hiddenMissingRows.style.display = "none";
-        this.textContent = "Daha Fazla Göster";
-    }
-});
-</script>
-        {% if missing_recommendations %}
-        <div class="mt-5 alert alert-info text-center">
-            <h3>📢 Satılmayan Ürünler İçin Öneriler</h3>
-            <p style="font-size: 18px;">{{ missing_recommendations|safe }}</p>
-        </div>
-        {% endif %}
-
-
-        {% if pie_chart_url %}
-        <div class="mt-5">
-            <h3>📊 Satış Oranları</h3>
-            <img src="data:image/png;base64,{{ pie_chart_url }}" alt="Satış Oranları Pie Chart" class="img-fluid">
-        </div>
-        {% endif %}
+    {% if recommendations %}
+    <div class="alert alert-warning mt-4">
+      <h5>💡 Az Satılan Ürünler İçin Öneriler</h5>
+      <p>{{ recommendations|safe }}</p>
     </div>
-</body>
+    {% endif %}
 
+    {% if missing_products %}
+    <div class="alert alert-danger mt-4">
+      <h5>⚠️ Eksik Ürünler</h5>
+      <p>Bu ürünleri hiç satmamışsınız:</p>
+    
+      <!-- İlk 5 ürün -->
+      <ul class="two-columns">
+        {% for product in missing_products.split('<br>')[:5] %}
+        <li>{{ product }}</li>
+        {% endfor %}
+      </ul>
+    
+      <!-- Geri kalan ürünler -->
+      <ul id="hiddenMissingRows" class="two-columns" style="display: none;">
+        {% for product in missing_products.split('<br>')[5:] %}
+        <li>{{ product }}</li>
+        {% endfor %}
+      </ul>
+    
+      <button class="btn btn-outline-danger w-100" id="toggleMissingButton">Daha Fazla Göster</button>
+    </div>
+    {% endif %}
+
+    <script>
+      document.getElementById("toggleMissingButton").addEventListener("click", function () {
+        const hiddenMissingRows = document.getElementById("hiddenMissingRows");
+        if (hiddenMissingRows.style.display === "none") {
+          hiddenMissingRows.style.display = "block";
+          this.textContent = "Daha Az Göster";
+        } else {
+          hiddenMissingRows.style.display = "none";
+          this.textContent = "Daha Fazla Göster";
+        }
+      });
+    </script>
+
+    {% if missing_recommendations %}
+    <div class="alert alert-info mt-4">
+      <h5>📢 Satılmayan Ürünler İçin Öneriler</h5>
+      <p>{{ missing_recommendations|safe }}</p>
+    </div>
+    {% endif %}
+
+    {% if pie_chart_url %}
+    <h3 class="mt-5">📊 Satış Oranları</h3>
+    <div class="row text-center">
+      <!-- 1. Grafik -->
+      <div class="col-md-6 mb-4">
+        <img src="data:image/png;base64,{{ pie_chart_url }}" alt="Pie 1" class="img-fluid">
+      </div>
+    
+      <!-- 2. Grafik -->
+      <div class="col-md-6 mb-4">
+        <img src="data:image/png;base64,{{ pie_chart_url2 }}" alt="Pie 2" class="img-fluid">
+      </div>
+    
+      <!-- 3. Grafik -->
+      <div class="col-md-6 mb-4">
+        <img src="data:image/png;base64,{{ pie_chart_url3 }}" alt="Pie 3" class="img-fluid">
+      </div>
+      <div class="col-md-6 mb-4">
+        <label for="soldFilter" class="form-label text-danger fw-bold">🔹 Satılan Ürünlerin Kategorilerini Seçin</label>
+        <select class="form-select mb-3" id="soldFilter" multiple>
+          <option value="AdaWall">AdaWall</option>
+          <option value="AdaHome">AdaHome</option>
+          <option value="AdaPanel">AdaPanel</option>
+        </select>
+        <div id="filteredSoldChartArea"></div>
+      </div>
+    </div>
+    {% endif %}
+    
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#soldFilter').select2({ placeholder: "Kategori seçin", width: '100%' });
+    });
+
+    function getSelectedValues(selectId) {
+      return $(`#${selectId}`).val();
+    }
+
+    function updateChart(endpoint, selected, targetId) {
+      if (!selected.length) {
+        document.getElementById(targetId).innerHTML = "";
+        return;
+      }
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ selected_categories: selected })
+      })
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById(targetId).innerHTML = `<img src="data:image/png;base64,${data}" class="img-fluid" style="max-width:100%; height:auto;" />`;
+
+        });
+    }
+
+    $('#soldFilter').on('change', function () {
+      const selected = getSelectedValues('soldFilter');
+      updateChart('/filtered_sold_chart', selected, 'filteredSoldChartArea');
+    });
+  </script>
+</body>
 </html>
